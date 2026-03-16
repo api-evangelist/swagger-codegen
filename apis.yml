@@ -1,0 +1,44 @@
+aid: swagger-codegen
+name: Swagger Codegen
+description: >-
+  Swagger Codegen is an open-source code generation tool that automatically
+  generates client libraries, server stubs, and API documentation from
+  OpenAPI Specification definitions in multiple programming languages.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Code Generation
+  - OpenAPI
+  - SDK
+  - Client Libraries
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/swagger-codegen/refs/heads/main/apis.yml
+created: '2026-03-16'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+apis:
+  - aid: swagger-codegen:swagger-codegen-api
+    name: Swagger Codegen API
+    description: >-
+      Tool for automatically generating API client libraries, server stubs,
+      and documentation from OpenAPI Specification (OAS) definitions.
+    humanURL: https://github.com/swagger-api/swagger-codegen
+    tags:
+      - Code Generation
+      - OpenAPI
+      - SDK
+    properties:
+      - type: Documentation
+        url: https://github.com/swagger-api/swagger-codegen/wiki
+      - type: Getting Started
+        url: https://github.com/swagger-api/swagger-codegen#getting-started
+common:
+  - type: Portal
+    url: https://swagger.io/tools/swagger-codegen/
+  - type: Documentation
+    url: https://github.com/swagger-api/swagger-codegen/wiki
+  - type: Website
+    url: https://swagger.io/
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
