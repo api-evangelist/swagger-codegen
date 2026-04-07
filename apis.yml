@@ -7,10 +7,10 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
+  - Client Libraries
   - Code Generation
   - OpenAPI
   - SDK
-  - Client Libraries
 url: >-
   https://raw.githubusercontent.com/api-evangelist/swagger-codegen/refs/heads/main/apis.yml
 created: '2026-03-16'
