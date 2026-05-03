@@ -1,0 +1,34 @@
+{
+  "name": "Swagger Codegen Generation Request Structure",
+  "description": "The structure of a Swagger Generator API GenerationRequest object.",
+  "created": "2026-05-02",
+  "modified": "2026-05-02",
+  "structure": {
+    "root": {
+      "type": "object",
+      "fields": [
+        { "name": "lang", "type": "string", "required": true, "description": "Generator language identifier" },
+        { "name": "type", "type": "string (enum: CLIENT|SERVER|DOCUMENTATION|CONFIG)", "required": false },
+        { "name": "codegenVersion", "type": "string (enum: V2|V3)", "required": false, "default": "V3" },
+        { "name": "spec", "type": "object (OpenAPI spec)", "required": false },
+        { "name": "specURL", "type": "string (uri)", "required": false },
+        {
+          "name": "options",
+          "type": "object",
+          "required": false,
+          "fields": [
+            { "name": "packageName", "type": "string", "required": false },
+            { "name": "packageVersion", "type": "string", "required": false },
+            { "name": "groupId", "type": "string", "required": false },
+            { "name": "artifactId", "type": "string", "required": false },
+            { "name": "modelPackage", "type": "string", "required": false },
+            { "name": "apiPackage", "type": "string", "required": false },
+            { "name": "npmName", "type": "string", "required": false },
+            { "name": "npmVersion", "type": "string", "required": false },
+            { "name": "hideGenerationTimestamp", "type": "boolean", "required": false }
+          ]
+        }
+      ]
+    }
+  }
+}

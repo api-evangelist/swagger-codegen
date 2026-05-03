@@ -1,0 +1,383 @@
+openapi: 3.0.1
+info:
+  title: Swagger Generator API
+  description: >-
+    The Swagger Generator online REST API at generator3.swagger.io provides
+    endpoints for generating client SDKs, server stubs, and documentation
+    artifacts from OpenAPI V2 and V3 specifications. Supports 40+ client
+    languages and 20+ server frameworks with configurable generation options.
+  version: 3.0.75
+  contact:
+    name: Swagger
+    url: https://swagger.io/tools/swagger-codegen/
+  license:
+    name: Apache 2.0
+    url: https://github.com/swagger-api/swagger-codegen/blob/master/LICENSE
+  x-logo:
+    url: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+
+servers:
+  - url: https://generator3.swagger.io
+    description: Swagger Generator V3 online service
+
+tags:
+  - name: Generation
+    description: Code generation endpoints for clients, servers, and documentation
+  - name: Languages
+    description: Discover available generator languages and types
+  - name: Options
+    description: Retrieve per-language configuration options
+  - name: Utilities
+    description: Template rendering and intermediate model generation
+
+paths:
+
+  /generate:
+    post:
+      operationId: generateCode
+      summary: Generate Code From Spec
+      description: >-
+        Generate a client SDK, server stub, or documentation package from an
+        OpenAPI specification provided in the request body. Returns the generated
+        artifact as a binary ZIP file.
+      tags:
+        - Generation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerationRequest'
+            example:
+              lang: python
+              type: CLIENT
+              codegenVersion: V3
+              spec:
+                openapi: "3.0.0"
+                info:
+                  title: My API
+                  version: "1.0.0"
+                paths: {}
+      responses:
+        '200':
+          description: Generated artifact as a ZIP archive
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Invalid generation request
+        '500':
+          description: Generation failed
+
+    get:
+      operationId: generateCodeFromUrl
+      summary: Generate Code From URL
+      description: >-
+        Generate a client SDK, server stub, or documentation package from an
+        OpenAPI specification referenced by URL via a JSON configuration at the
+        provided URL.
+      tags:
+        - Generation
+      parameters:
+        - name: codegenOptionsURL
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uri
+          description: URL to a JSON GenerationRequest configuration object
+      responses:
+        '200':
+          description: Generated artifact as a ZIP archive
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Invalid URL or unreachable configuration
+
+  /{type}/{version}:
+    get:
+      operationId: listLanguages
+      summary: List Generator Languages
+      description: >-
+        Returns the list of available generator language identifiers for the
+        given generator type (client, server, documentation, config) and
+        OpenAPI version (V2 or V3).
+      tags:
+        - Languages
+      parameters:
+        - name: type
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [client, server, documentation, config]
+          description: Generator type to list
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [V2, V3]
+          description: OpenAPI specification version
+      responses:
+        '200':
+          description: Array of language/framework identifier strings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+              example: ["python", "java", "go", "typescript-axios", "kotlin-client"]
+        '400':
+          description: Invalid type or version
+
+  /types:
+    get:
+      operationId: listLanguagesMulti
+      summary: List Languages by Multiple Types
+      description: >-
+        Returns the list of available generator languages filtered by a comma-
+        separated list of generator types and an optional OpenAPI version.
+      tags:
+        - Languages
+      parameters:
+        - name: types
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Comma-separated list of generator types (client,server,documentation,config)
+        - name: version
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [V2, V3]
+          description: OpenAPI specification version filter
+      responses:
+        '200':
+          description: Array of language identifier strings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+
+  /options:
+    get:
+      operationId: listOptions
+      summary: List Generator Options
+      description: >-
+        Returns the configurable options available for a specific generator
+        language and OpenAPI version. Options control naming, packaging, type
+        mappings, and other generation behaviors.
+      tags:
+        - Options
+      parameters:
+        - name: language
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Generator language identifier (e.g., python, java, typescript-axios)
+        - name: version
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [V2, V3]
+            default: V3
+          description: OpenAPI version (defaults to V3)
+      responses:
+        '200':
+          description: Map of option keys to CliOption descriptors
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/CliOption'
+
+  /model:
+    post:
+      operationId: generateModel
+      summary: Generate Intermediate Model
+      description: >-
+        Generates and returns the intermediate representation (bundle/model) of
+        the code generation process as a JSON object. Useful for debugging and
+        template development.
+      tags:
+        - Utilities
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerationRequest'
+      responses:
+        '200':
+          description: Intermediate model as a JSON object
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+
+  /render:
+    post:
+      operationId: renderTemplate
+      summary: Render Template
+      description: >-
+        Render a Mustache template using provided data. Useful for testing
+        custom generator templates without running a full code generation pass.
+      tags:
+        - Utilities
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RenderRequest'
+      responses:
+        '200':
+          description: Rendered template output
+        '400':
+          description: Invalid template or data
+
+components:
+  schemas:
+    GenerationRequest:
+      type: object
+      required:
+        - lang
+      description: Request body for code generation operations
+      properties:
+        lang:
+          type: string
+          description: The generator language/framework identifier (e.g., python, java, spring)
+        type:
+          type: string
+          enum: [CLIENT, SERVER, DOCUMENTATION, CONFIG]
+          description: Generator type
+        codegenVersion:
+          type: string
+          enum: [V2, V3]
+          default: V3
+          description: Codegen version — V2 for OpenAPI 2.x specs, V3 for OpenAPI 3.x
+        spec:
+          type: object
+          description: Inline OpenAPI specification as a JSON object
+          additionalProperties: true
+        specURL:
+          type: string
+          format: uri
+          description: URL to a remote OpenAPI specification file
+        options:
+          $ref: '#/components/schemas/Options'
+
+    Options:
+      type: object
+      description: >-
+        Configurable code generation options. Available options vary per language.
+        Retrieve available options for a language via GET /options.
+      properties:
+        packageName:
+          type: string
+          description: Package/module name for the generated code
+        packageVersion:
+          type: string
+          description: Version to set in the generated package metadata
+        groupId:
+          type: string
+          description: Maven groupId for Java-based generators
+        artifactId:
+          type: string
+          description: Maven artifactId for Java-based generators
+        artifactVersion:
+          type: string
+          description: Maven artifact version
+        sourceFolder:
+          type: string
+          description: Source code folder path within the generated project
+        modelPackage:
+          type: string
+          description: Package name for generated model classes
+        apiPackage:
+          type: string
+          description: Package name for generated API client classes
+        invokerPackage:
+          type: string
+          description: Package name for generated invoker/entry-point classes
+        httpUserAgent:
+          type: string
+          description: User-Agent string set in generated HTTP client code
+        gitUserId:
+          type: string
+          description: GitHub user ID for SCM metadata in generated packages
+        gitRepoId:
+          type: string
+          description: GitHub repository ID for SCM metadata in generated packages
+        hideGenerationTimestamp:
+          type: boolean
+          description: Omit generation timestamp from generated file headers
+        dateLibrary:
+          type: string
+          description: Date/time library to use in generated code
+        useRxJS6:
+          type: boolean
+          description: Use RxJS 6 in TypeScript Angular generators
+        npmName:
+          type: string
+          description: npm package name for JavaScript/TypeScript generators
+        npmVersion:
+          type: string
+          description: npm package version
+        npmRepository:
+          type: string
+          description: npm registry URL
+        withSeparateModelsAndApi:
+          type: boolean
+          description: Put models and API in separate source folders
+
+    CliOption:
+      type: object
+      description: Metadata describing a single configurable generator option
+      properties:
+        optionName:
+          type: string
+          description: The option key name
+        description:
+          type: string
+          description: Human-readable description of what this option controls
+        type:
+          type: string
+          enum: [string, boolean, integer]
+          description: Option value type
+        default:
+          type: string
+          description: Default value for this option
+        enum:
+          type: object
+          description: Allowed enum values and their descriptions (if applicable)
+          additionalProperties:
+            type: string
+
+    RenderRequest:
+      type: object
+      description: Request body for template rendering
+      properties:
+        template:
+          type: string
+          description: Mustache template string to render
+        data:
+          type: object
+          description: Data object to apply to the template
+          additionalProperties: true

@@ -1,0 +1,37 @@
+{
+  "operation": "List Available Client Generator Languages",
+  "request": {
+    "method": "GET",
+    "url": "https://generator3.swagger.io/client/V3",
+    "headers": {
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": [
+      "csharp",
+      "csharp-dotnet2",
+      "dart",
+      "go",
+      "java",
+      "javascript",
+      "jaxrs-cxf-client",
+      "kotlin-client",
+      "php",
+      "python",
+      "r",
+      "ruby",
+      "scala",
+      "swift3",
+      "swift4",
+      "swift5",
+      "typescript-angular",
+      "typescript-axios",
+      "typescript-fetch"
+    ]
+  }
+}

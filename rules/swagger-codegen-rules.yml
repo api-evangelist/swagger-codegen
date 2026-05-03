@@ -1,0 +1,75 @@
+extends: spectral:oas
+rules:
+
+  swagger-codegen-operations-have-tags:
+    description: All Generator API operations must have at least one tag
+    severity: warn
+    given: "$.paths[*][get,post,put,delete,patch]"
+    then:
+      field: tags
+      function: truthy
+
+  swagger-codegen-operations-have-summaries:
+    description: All Generator API operations must have a summary
+    severity: error
+    given: "$.paths[*][get,post,put,delete,patch]"
+    then:
+      field: summary
+      function: truthy
+
+  swagger-codegen-summaries-title-case:
+    description: Generator API operation summaries must use Title Case
+    severity: warn
+    given: "$.paths[*][get,post,put,delete,patch].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9]*([ ][A-Z][a-zA-Z0-9]*)*$"
+
+  swagger-codegen-operations-have-operation-ids:
+    description: All Generator API operations must have an operationId
+    severity: error
+    given: "$.paths[*][get,post,put,delete,patch]"
+    then:
+      field: operationId
+      function: truthy
+
+  swagger-codegen-operations-have-descriptions:
+    description: All Generator API operations must have a description
+    severity: warn
+    given: "$.paths[*][get,post,put,delete,patch]"
+    then:
+      field: description
+      function: truthy
+
+  swagger-codegen-path-params-required:
+    description: Path parameters must be marked as required
+    severity: error
+    given: "$.paths[*][*].parameters[?(@.in == 'path')]"
+    then:
+      field: required
+      function: truthy
+
+  swagger-codegen-schemas-have-descriptions:
+    description: All component schemas must have a description
+    severity: warn
+    given: "$.components.schemas[*]"
+    then:
+      field: description
+      function: truthy
+
+  swagger-codegen-generation-request-lang-required:
+    description: GenerationRequest schema must require lang field
+    severity: error
+    given: "$.components.schemas.GenerationRequest"
+    then:
+      field: required
+      function: truthy
+
+  swagger-codegen-responses-have-descriptions:
+    description: All response objects must have a description
+    severity: warn
+    given: "$.paths[*][*].responses[*]"
+    then:
+      field: description
+      function: truthy

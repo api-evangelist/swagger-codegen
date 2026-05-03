@@ -1,0 +1,30 @@
+{
+  "operation": "Generate Python Client SDK",
+  "request": {
+    "method": "POST",
+    "url": "https://generator3.swagger.io/generate",
+    "headers": {
+      "Content-Type": "application/json",
+      "Accept": "application/octet-stream"
+    },
+    "body": {
+      "lang": "python",
+      "type": "CLIENT",
+      "codegenVersion": "V3",
+      "specURL": "https://petstore3.swagger.io/api/v3/openapi.json",
+      "options": {
+        "packageName": "petstore_client",
+        "packageVersion": "1.0.0",
+        "hideGenerationTimestamp": true
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/octet-stream",
+      "Content-Disposition": "attachment; filename=\"python-client-generated.zip\""
+    },
+    "body": "<binary ZIP file containing generated Python client SDK>"
+  }
+}

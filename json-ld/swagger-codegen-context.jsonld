@@ -1,0 +1,58 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "codegen": "https://api-evangelist.github.io/swagger-codegen/vocab#",
+
+    "CodeGenerator": {
+      "@id": "codegen:CodeGenerator",
+      "@type": "@id"
+    },
+    "GenerationRequest": {
+      "@id": "codegen:GenerationRequest",
+      "@type": "@id"
+    },
+    "GeneratorLanguage": {
+      "@id": "codegen:GeneratorLanguage",
+      "@type": "@id"
+    },
+    "GeneratorOption": {
+      "@id": "codegen:GeneratorOption",
+      "@type": "@id"
+    },
+    "ClientSdk": {
+      "@id": "codegen:ClientSdk",
+      "@type": "@id"
+    },
+    "ServerStub": {
+      "@id": "codegen:ServerStub",
+      "@type": "@id"
+    },
+
+    "name": { "@id": "schema:name" },
+    "description": { "@id": "schema:description" },
+    "url": { "@id": "schema:url", "@type": "@id" },
+    "programmingLanguage": { "@id": "schema:programmingLanguage" },
+    "codeRepository": { "@id": "schema:codeRepository", "@type": "@id" },
+    "license": { "@id": "schema:license", "@type": "@id" },
+    "version": { "@id": "schema:version" },
+    "softwareVersion": { "@id": "schema:softwareVersion" },
+    "featureList": { "@id": "schema:featureList" },
+
+    "generatorType": { "@id": "codegen:generatorType" },
+    "codegenVersion": { "@id": "codegen:codegenVersion" },
+    "lang": { "@id": "codegen:lang" },
+    "specURL": { "@id": "codegen:specURL", "@type": "@id" },
+    "packageName": { "@id": "codegen:packageName" },
+    "packageVersion": { "@id": "codegen:packageVersion" },
+    "groupId": { "@id": "codegen:groupId" },
+    "artifactId": { "@id": "codegen:artifactId" },
+    "modelPackage": { "@id": "codegen:modelPackage" },
+    "apiPackage": { "@id": "codegen:apiPackage" },
+    "templateEngine": { "@id": "codegen:templateEngine" },
+    "supportedLanguages": {
+      "@id": "codegen:supportedLanguages",
+      "@container": "@list"
+    }
+  }
+}

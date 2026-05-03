@@ -1,0 +1,142 @@
+vocabulary:
+  name: Swagger Codegen Vocabulary
+  description: >-
+    Vocabulary for Swagger Codegen and the Swagger Generator API. Covers code
+    generation concepts, generator types, language targets, template engine
+    terminology, and OpenAPI specification integration.
+  created: '2026-05-02'
+  modified: '2026-05-02'
+  tags:
+    - Client Libraries
+    - Code Generation
+    - OpenAPI
+    - SDK
+
+  terms:
+
+    - term: Swagger Codegen
+      definition: >-
+        An open-source, template-driven tool that generates client SDKs,
+        server stubs, and API documentation by parsing OpenAPI/Swagger
+        specification definitions. Maintained by SmartBear and the community.
+      tags:
+        - Core
+        - Tools
+
+    - term: Generator
+      definition: >-
+        A language- or framework-specific module within Swagger Codegen that
+        produces code artifacts for a specific target (e.g., python, java,
+        spring, nodejs-server). Each generator has its own configurable options.
+      tags:
+        - Core
+
+    - term: Client SDK
+      definition: >-
+        A generated library in a specific programming language that provides
+        typed, ready-to-use classes and methods for calling an API described
+        by an OpenAPI specification.
+      tags:
+        - Client Libraries
+        - Output
+
+    - term: Server Stub
+      definition: >-
+        Generated boilerplate server code in a specific framework that provides
+        the structure (routes, models, handlers) for implementing an API described
+        by an OpenAPI specification.
+      tags:
+        - Output
+        - Server
+
+    - term: Mustache Template
+      definition: >-
+        A logic-less template language used by Swagger Codegen to generate code
+        output. Templates (.mustache files) are interpolated with the
+        intermediate model to produce language-specific source code files.
+      tags:
+        - Templates
+        - Core
+
+    - term: Intermediate Model
+      definition: >-
+        The in-memory data structure produced by Swagger Codegen when it parses
+        an OpenAPI specification. The intermediate model is passed to Mustache
+        templates for rendering. Accessible via the /model endpoint.
+      tags:
+        - Core
+        - Internals
+
+    - term: Generation Request
+      definition: >-
+        The JSON request body submitted to the Swagger Generator API containing
+        the target language, generator type, OpenAPI spec (inline or URL),
+        and optional configuration options.
+      tags:
+        - API
+        - Core
+
+    - term: GenerationRequest.lang
+      definition: >-
+        The required field in a GenerationRequest specifying the target language
+        or framework identifier (e.g., "python", "java", "spring", "typescript-axios").
+      tags:
+        - API
+
+    - term: Codegen Version
+      definition: >-
+        The version of the Swagger Codegen engine to use — V2 for OpenAPI 2.x
+        (Swagger) specifications and V3 for OpenAPI 3.x specifications.
+      tags:
+        - Core
+        - Versioning
+
+    - term: OpenAPI Specification
+      definition: >-
+        The machine-readable API description format (formerly called Swagger)
+        that Swagger Codegen parses as its primary input. Supports versions
+        1.x, 2.x (Swagger), and 3.x (OpenAPI).
+      tags:
+        - Standards
+        - Input
+
+    - term: CLI Option
+      definition: >-
+        A configurable parameter for a specific generator, such as packageName,
+        groupId, or dateLibrary. Available options vary by generator and are
+        discoverable via the /options endpoint.
+      tags:
+        - Configuration
+
+    - term: Package Name
+      definition: >-
+        A generator option specifying the top-level package, module, or namespace
+        name in the generated code. Commonly used in Python, Go, and Java generators.
+      tags:
+        - Configuration
+
+    - term: Maven Plugin
+      definition: >-
+        A Swagger Codegen integration for Apache Maven that runs code generation
+        as part of the Maven build lifecycle, enabling automated SDK generation
+        in Java projects.
+      tags:
+        - Integration
+        - Build
+
+    - term: Gradle Plugin
+      definition: >-
+        A Swagger Codegen integration for Gradle that enables automated code
+        generation as a Gradle build task.
+      tags:
+        - Integration
+        - Build
+
+    - term: OpenAPI Generator
+      definition: >-
+        A community fork of Swagger Codegen (split in 2018) that is maintained
+        separately at OpenAPITools/openapi-generator. Supports additional languages
+        and frameworks while sharing common ancestry with Swagger Codegen.
+      tags:
+        - Ecosystem
+        - Related Projects

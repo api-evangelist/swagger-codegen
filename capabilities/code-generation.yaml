@@ -1,0 +1,174 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Swagger Codegen Code Generation"
+  description: >-
+    Workflow capability for generating API client libraries, server stubs, and
+    documentation from OpenAPI specifications using the Swagger Generator online
+    service. Covers language discovery, option inspection, and artifact generation
+    for developers and API teams.
+  tags:
+    - Client Libraries
+    - Code Generation
+    - Generator
+    - OpenAPI
+    - SDK
+    - Swagger
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      SWAGGER_GENERATOR_URL: SWAGGER_GENERATOR_URL
+
+capability:
+  consumes:
+    - import: swagger-generator
+      location: ./shared/swagger-generator.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: code-generation-api
+      description: "Unified REST API for Swagger Codegen generation workflows."
+      resources:
+        - path: /v1/languages
+          name: languages
+          description: "Available generator languages and types"
+          operations:
+            - method: GET
+              name: list-languages
+              description: "List available generator languages for a type and version"
+              call: "swagger-generator.list-languages"
+              with:
+                type: "rest.type"
+                version: "rest.version"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/options
+          name: options
+          description: "Generator options per language"
+          operations:
+            - method: GET
+              name: list-options
+              description: "Get configurable generation options for a language"
+              call: "swagger-generator.list-options"
+              with:
+                language: "rest.language"
+                version: "rest.version"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/generate
+          name: generate
+          description: "Code generation"
+          operations:
+            - method: POST
+              name: generate-code
+              description: "Generate a client SDK or server stub from an OpenAPI spec"
+              call: "swagger-generator.generate-code"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/model
+          name: model
+          description: "Intermediate model inspection"
+          operations:
+            - method: POST
+              name: generate-model
+              description: "Generate intermediate model JSON for debugging"
+              call: "swagger-generator.generate-model"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: code-generation-mcp
+      transport: http
+      description: "MCP server for AI-assisted API code generation with Swagger Codegen."
+      tools:
+        - name: list-client-languages
+          description: "List all available client SDK generator languages for V3 OpenAPI specs"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "swagger-generator.list-languages"
+          with:
+            type: "client"
+            version: "V3"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-server-languages
+          description: "List all available server stub generator languages for V3 OpenAPI specs"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "swagger-generator.list-languages"
+          with:
+            type: "server"
+            version: "V3"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-language-options
+          description: "Get all configurable options for a specific Swagger Codegen generator language"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "swagger-generator.list-options"
+          with:
+            language: "tools.language"
+            version: "tools.version"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: generate-client-sdk
+          description: "Generate a client SDK in the specified language from an OpenAPI specification"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "swagger-generator.generate-code"
+          with:
+            lang: "tools.lang"
+            type: "CLIENT"
+            spec: "tools.spec"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: generate-server-stub
+          description: "Generate a server stub in the specified framework from an OpenAPI specification"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "swagger-generator.generate-code"
+          with:
+            lang: "tools.lang"
+            type: "SERVER"
+            spec: "tools.spec"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: generate-model
+          description: "Generate the intermediate bundle model JSON for a generation request — useful for debugging templates"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "swagger-generator.generate-model"
+          with:
+            lang: "tools.lang"
+            spec: "tools.spec"
+          outputParameters:
+            - type: object
+              mapping: "$."

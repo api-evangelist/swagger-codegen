@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/swagger-codegen/json-schema/swagger-codegen-generation-request-schema.json",
+  "title": "Swagger Codegen Generation Request",
+  "description": "Schema for a Swagger Codegen generation request, used to generate client SDKs, server stubs, or documentation from an OpenAPI specification.",
+  "type": "object",
+  "required": ["lang"],
+  "properties": {
+    "lang": {
+      "type": "string",
+      "description": "Generator language/framework identifier (e.g., python, java, typescript-axios, spring)"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["CLIENT", "SERVER", "DOCUMENTATION", "CONFIG"],
+      "description": "Generator type"
+    },
+    "codegenVersion": {
+      "type": "string",
+      "enum": ["V2", "V3"],
+      "default": "V3",
+      "description": "Codegen version — V2 for OpenAPI 2.x specs, V3 for OpenAPI 3.x"
+    },
+    "spec": {
+      "type": "object",
+      "description": "Inline OpenAPI specification as a JSON object",
+      "additionalProperties": true
+    },
+    "specURL": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to a remote OpenAPI specification file"
+    },
+    "options": {
+      "type": "object",
+      "description": "Language-specific generation options",
+      "properties": {
+        "packageName": { "type": "string" },
+        "packageVersion": { "type": "string" },
+        "groupId": { "type": "string" },
+        "artifactId": { "type": "string" },
+        "modelPackage": { "type": "string" },
+        "apiPackage": { "type": "string" },
+        "npmName": { "type": "string" },
+        "npmVersion": { "type": "string" },
+        "hideGenerationTimestamp": { "type": "boolean" }
+      }
+    }
+  }
+}
