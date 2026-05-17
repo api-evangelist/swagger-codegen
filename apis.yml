@@ -42,7 +42,7 @@ apis:
         url: https://raw.githubusercontent.com/api-evangelist/swagger-codegen/refs/heads/main/openapi/swagger-generator-openapi.yml
       - type: OpenAPI Source
         url: https://generator3.swagger.io/openapi.json
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/swagger-api/swagger-codegen
 
   - aid: swagger-codegen:swagger-codegen-cli
@@ -60,7 +60,7 @@ apis:
     properties:
       - type: Documentation
         url: https://github.com/swagger-api/swagger-codegen/wiki
-      - type: Getting Started
+      - type: GettingStarted
         url: https://github.com/swagger-api/swagger-codegen#getting-started
       - type: Docker
         url: https://hub.docker.com/r/swaggerapi/swagger-codegen-cli-v3
@@ -74,9 +74,9 @@ common:
     url: https://github.com/swagger-api/swagger-codegen/wiki
   - type: Website
     url: https://swagger.io/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/swagger-api
-  - type: GitHub Repository
+  - type: GitHubRepository
     url: https://github.com/swagger-api/swagger-codegen
   - type: Issues
     url: https://github.com/swagger-api/swagger-codegen/issues
