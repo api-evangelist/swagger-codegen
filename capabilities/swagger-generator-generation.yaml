@@ -1,0 +1,112 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Swagger Generator API — Generation
+  description: 'Swagger Generator API — Generation. 2 operations. Lead operation: Generate Code From Spec. Self-contained
+    Naftiko capability covering one Swagger Codegen business surface.'
+  tags:
+  - Swagger Codegen
+  - Generation
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SWAGGER_CODEGEN_API_KEY: SWAGGER_CODEGEN_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: swagger-generator-generation
+    baseUri: https://generator3.swagger.io
+    description: Swagger Generator API — Generation business capability. Self-contained, no shared references.
+    resources:
+    - name: generate
+      path: /generate
+      operations:
+      - name: generatecode
+        method: POST
+        description: Generate Code From Spec
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: generatecodefromurl
+        method: GET
+        description: Generate Code From URL
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: codegenOptionsURL
+          in: query
+          type: string
+          description: URL to a JSON GenerationRequest configuration object
+          required: true
+  exposes:
+  - type: rest
+    namespace: swagger-generator-generation-rest
+    port: 8080
+    description: REST adapter for Swagger Generator API — Generation. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/generate
+      name: generate
+      description: REST surface for generate.
+      operations:
+      - method: POST
+        name: generatecode
+        description: Generate Code From Spec
+        call: swagger-generator-generation.generatecode
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: generatecodefromurl
+        description: Generate Code From URL
+        call: swagger-generator-generation.generatecodefromurl
+        with:
+          codegenOptionsURL: rest.codegenOptionsURL
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: swagger-generator-generation-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Swagger Generator API — Generation. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: generate-code-spec
+      description: Generate Code From Spec
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: swagger-generator-generation.generatecode
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: generate-code-url
+      description: Generate Code From URL
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: swagger-generator-generation.generatecodefromurl
+      with:
+        codegenOptionsURL: tools.codegenOptionsURL
+      outputParameters:
+      - type: object
+        mapping: $.
