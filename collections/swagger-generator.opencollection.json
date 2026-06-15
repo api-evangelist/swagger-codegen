@@ -1,0 +1,181 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Swagger Generator API",
+    "version": "3.0.75"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Generation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate Code From URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://generator3.swagger.io/generate",
+            "params": [
+              {
+                "name": "codegenOptionsURL",
+                "value": "",
+                "type": "query",
+                "description": "URL to a JSON GenerationRequest configuration object"
+              }
+            ]
+          },
+          "docs": "Generate a client SDK, server stub, or documentation package from an OpenAPI specification referenced by URL via a JSON configuration at the provided URL."
+        },
+        {
+          "info": {
+            "name": "Generate Code From Spec",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://generator3.swagger.io/generate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a client SDK, server stub, or documentation package from an OpenAPI specification provided in the request body. Returns the generated artifact as a binary ZIP file."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Languages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Generator Languages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://generator3.swagger.io/:type/:version",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Generator type to list"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "OpenAPI specification version"
+              }
+            ]
+          },
+          "docs": "Returns the list of available generator language identifiers for the given generator type (client, server, documentation, config) and OpenAPI version (V2 or V3)."
+        },
+        {
+          "info": {
+            "name": "List Languages by Multiple Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://generator3.swagger.io/types",
+            "params": [
+              {
+                "name": "types",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of generator types (client,server,documentation,config)"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "OpenAPI specification version filter"
+              }
+            ]
+          },
+          "docs": "Returns the list of available generator languages filtered by a comma- separated list of generator types and an optional OpenAPI version."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Options",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Generator Options",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://generator3.swagger.io/options",
+            "params": [
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Generator language identifier (e.g., python, java, typescript-axios)"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "OpenAPI version (defaults to V3)"
+              }
+            ]
+          },
+          "docs": "Returns the configurable options available for a specific generator language and OpenAPI version. Options control naming, packaging, type mappings, and other generation behaviors."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Utilities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate Intermediate Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://generator3.swagger.io/model",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates and returns the intermediate representation (bundle/model) of the code generation process as a JSON object. Useful for debugging and template development."
+        },
+        {
+          "info": {
+            "name": "Render Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://generator3.swagger.io/render",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Render a Mustache template using provided data. Useful for testing custom generator templates without running a full code generation pass."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

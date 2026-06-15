@@ -1,0 +1,923 @@
+{
+  "item": [
+    {
+      "id": "b4b1d028-63f2-4159-9414-54567cb3dfd0",
+      "name": "Generation",
+      "description": {
+        "content": "Code generation endpoints for clients, servers, and documentation",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c494da96-ff07-4a15-a3b6-9111c8feedf8",
+          "name": "Generate Code From Spec",
+          "request": {
+            "name": "Generate Code From Spec",
+            "description": {
+              "content": "Generate a client SDK, server stub, or documentation package from an OpenAPI specification provided in the request body. Returns the generated artifact as a binary ZIP file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "generate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lang\": \"<string>\",\n  \"type\": \"<string>\",\n  \"codegenVersion\": \"V3\",\n  \"spec\": {\n    \"key_0\": 2987,\n    \"key_1\": false\n  },\n  \"specURL\": \"<uri>\",\n  \"options\": {\n    \"packageName\": \"<string>\",\n    \"packageVersion\": \"<string>\",\n    \"groupId\": \"<string>\",\n    \"artifactId\": \"<string>\",\n    \"artifactVersion\": \"<string>\",\n    \"sourceFolder\": \"<string>\",\n    \"modelPackage\": \"<string>\",\n    \"apiPackage\": \"<string>\",\n    \"invokerPackage\": \"<string>\",\n    \"httpUserAgent\": \"<string>\",\n    \"gitUserId\": \"<string>\",\n    \"gitRepoId\": \"<string>\",\n    \"hideGenerationTimestamp\": \"<boolean>\",\n    \"dateLibrary\": \"<string>\",\n    \"useRxJS6\": \"<boolean>\",\n    \"npmName\": \"<string>\",\n    \"npmVersion\": \"<string>\",\n    \"npmRepository\": \"<string>\",\n    \"withSeparateModelsAndApi\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8ba42ad8-2399-4164-bbe7-fbf2420d4d0e",
+              "name": "Generated artifact as a ZIP archive",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"python\",\n  \"type\": \"CLIENT\",\n  \"codegenVersion\": \"V3\",\n  \"spec\": {\n    \"openapi\": \"3.0.0\",\n    \"info\": {\n      \"title\": \"My API\",\n      \"version\": \"1.0.0\"\n    },\n    \"paths\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "29cebd44-5d61-48fc-8b44-98c0099e5083",
+              "name": "Invalid generation request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"python\",\n  \"type\": \"CLIENT\",\n  \"codegenVersion\": \"V3\",\n  \"spec\": {\n    \"openapi\": \"3.0.0\",\n    \"info\": {\n      \"title\": \"My API\",\n      \"version\": \"1.0.0\"\n    },\n    \"paths\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6245057a-cd11-4871-9da6-61d96a765fe9",
+              "name": "Generation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"python\",\n  \"type\": \"CLIENT\",\n  \"codegenVersion\": \"V3\",\n  \"spec\": {\n    \"openapi\": \"3.0.0\",\n    \"info\": {\n      \"title\": \"My API\",\n      \"version\": \"1.0.0\"\n    },\n    \"paths\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd842c48-8f5d-4737-b015-b78afc80d279",
+          "name": "Generate Code From URL",
+          "request": {
+            "name": "Generate Code From URL",
+            "description": {
+              "content": "Generate a client SDK, server stub, or documentation package from an OpenAPI specification referenced by URL via a JSON configuration at the provided URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "generate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "codegenOptionsURL",
+                  "value": "<uri>",
+                  "description": "(Required) URL to a JSON GenerationRequest configuration object"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1492653b-6d6a-4f97-9a28-3ed73c9459a0",
+              "name": "Generated artifact as a ZIP archive",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "codegenOptionsURL",
+                      "value": "<uri>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7fcc8c8d-dba7-4bb7-b20f-5878daa45fa4",
+              "name": "Invalid URL or unreachable configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "codegenOptionsURL",
+                      "value": "<uri>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e2c7f5c4-5720-4a2a-b34a-ff8fe7465c8a",
+      "name": "Languages",
+      "description": {
+        "content": "Discover available generator languages and types",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6e01a9e9-ef6f-41b3-a68e-81bdfbc0cc8d",
+          "name": "List Generator Languages",
+          "request": {
+            "name": "List Generator Languages",
+            "description": {
+              "content": "Returns the list of available generator language identifiers for the given generator type (client, server, documentation, config) and OpenAPI version (V2 or V3).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":type",
+                ":version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) Generator type to list"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version",
+                  "description": "(Required) OpenAPI specification version"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e69c5f1-6e27-4f92-a80b-70de2d8a9e7b",
+              "name": "Array of language/framework identifier strings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":type",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Generator type to list"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) OpenAPI specification version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"python\",\n  \"java\",\n  \"go\",\n  \"typescript-axios\",\n  \"kotlin-client\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c0bcf31-af1e-487a-abd4-ba620200b63d",
+              "name": "Invalid type or version",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":type",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) Generator type to list"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version",
+                      "description": "(Required) OpenAPI specification version"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6aa54f2-71a0-44bc-955c-bafea2bc5cd6",
+          "name": "List Languages by Multiple Types",
+          "request": {
+            "name": "List Languages by Multiple Types",
+            "description": {
+              "content": "Returns the list of available generator languages filtered by a comma- separated list of generator types and an optional OpenAPI version.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "types"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "types",
+                  "value": "<string>",
+                  "description": "Comma-separated list of generator types (client,server,documentation,config)"
+                },
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>",
+                  "description": "OpenAPI specification version filter"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b667fb1-a5cf-4d6c-8a44-e7e3b1b69ada",
+              "name": "Array of language identifier strings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "types",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "2d3c3e75-df47-4b9b-97df-0cac759bb15c",
+      "name": "Options",
+      "description": {
+        "content": "Retrieve per-language configuration options",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "84669177-0551-420b-b4d2-8c56b4883a87",
+          "name": "List Generator Options",
+          "request": {
+            "name": "List Generator Options",
+            "description": {
+              "content": "Returns the configurable options available for a specific generator language and OpenAPI version. Options control naming, packaging, type mappings, and other generation behaviors.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>",
+                  "description": "Generator language identifier (e.g., python, java, typescript-axios)"
+                },
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "V3",
+                  "description": "OpenAPI version (defaults to V3)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e117d09f-41c6-4893-a75b-81f81f360219",
+              "name": "Map of option keys to CliOption descriptors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "V3"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {\n    \"optionName\": \"string\",\n    \"description\": \"string\",\n    \"type\": \"boolean\",\n    \"default\": \"string\",\n    \"enum\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\",\n      \"key_3\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "87910ec3-09d9-467c-bf33-ce24bbe8d419",
+      "name": "Utilities",
+      "description": {
+        "content": "Template rendering and intermediate model generation",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1646def6-b484-429f-911d-e4bb6148ef02",
+          "name": "Generate Intermediate Model",
+          "request": {
+            "name": "Generate Intermediate Model",
+            "description": {
+              "content": "Generates and returns the intermediate representation (bundle/model) of the code generation process as a JSON object. Useful for debugging and template development.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "model"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lang\": \"<string>\",\n  \"type\": \"<string>\",\n  \"codegenVersion\": \"V3\",\n  \"spec\": {\n    \"key_0\": 2987,\n    \"key_1\": false\n  },\n  \"specURL\": \"<uri>\",\n  \"options\": {\n    \"packageName\": \"<string>\",\n    \"packageVersion\": \"<string>\",\n    \"groupId\": \"<string>\",\n    \"artifactId\": \"<string>\",\n    \"artifactVersion\": \"<string>\",\n    \"sourceFolder\": \"<string>\",\n    \"modelPackage\": \"<string>\",\n    \"apiPackage\": \"<string>\",\n    \"invokerPackage\": \"<string>\",\n    \"httpUserAgent\": \"<string>\",\n    \"gitUserId\": \"<string>\",\n    \"gitRepoId\": \"<string>\",\n    \"hideGenerationTimestamp\": \"<boolean>\",\n    \"dateLibrary\": \"<string>\",\n    \"useRxJS6\": \"<boolean>\",\n    \"npmName\": \"<string>\",\n    \"npmVersion\": \"<string>\",\n    \"npmRepository\": \"<string>\",\n    \"withSeparateModelsAndApi\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "702a722d-7a5d-411a-a291-e1df903246cd",
+              "name": "Intermediate model as a JSON object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"<string>\",\n  \"type\": \"<string>\",\n  \"codegenVersion\": \"V3\",\n  \"spec\": {\n    \"key_0\": \"string\"\n  },\n  \"specURL\": \"<uri>\",\n  \"options\": {\n    \"packageName\": \"<string>\",\n    \"packageVersion\": \"<string>\",\n    \"groupId\": \"<string>\",\n    \"artifactId\": \"<string>\",\n    \"artifactVersion\": \"<string>\",\n    \"sourceFolder\": \"<string>\",\n    \"modelPackage\": \"<string>\",\n    \"apiPackage\": \"<string>\",\n    \"invokerPackage\": \"<string>\",\n    \"httpUserAgent\": \"<string>\",\n    \"gitUserId\": \"<string>\",\n    \"gitRepoId\": \"<string>\",\n    \"hideGenerationTimestamp\": \"<boolean>\",\n    \"dateLibrary\": \"<string>\",\n    \"useRxJS6\": \"<boolean>\",\n    \"npmName\": \"<string>\",\n    \"npmVersion\": \"<string>\",\n    \"npmRepository\": \"<string>\",\n    \"withSeparateModelsAndApi\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93b2fae2-1c97-46c4-94be-c9fd19a1d84a",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"<string>\",\n  \"type\": \"<string>\",\n  \"codegenVersion\": \"V3\",\n  \"spec\": {\n    \"key_0\": \"string\"\n  },\n  \"specURL\": \"<uri>\",\n  \"options\": {\n    \"packageName\": \"<string>\",\n    \"packageVersion\": \"<string>\",\n    \"groupId\": \"<string>\",\n    \"artifactId\": \"<string>\",\n    \"artifactVersion\": \"<string>\",\n    \"sourceFolder\": \"<string>\",\n    \"modelPackage\": \"<string>\",\n    \"apiPackage\": \"<string>\",\n    \"invokerPackage\": \"<string>\",\n    \"httpUserAgent\": \"<string>\",\n    \"gitUserId\": \"<string>\",\n    \"gitRepoId\": \"<string>\",\n    \"hideGenerationTimestamp\": \"<boolean>\",\n    \"dateLibrary\": \"<string>\",\n    \"useRxJS6\": \"<boolean>\",\n    \"npmName\": \"<string>\",\n    \"npmVersion\": \"<string>\",\n    \"npmRepository\": \"<string>\",\n    \"withSeparateModelsAndApi\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce383f13-fa6d-428b-bedf-918d01aea217",
+          "name": "Render Template",
+          "request": {
+            "name": "Render Template",
+            "description": {
+              "content": "Render a Mustache template using provided data. Useful for testing custom generator templates without running a full code generation pass.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "render"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"template\": \"<string>\",\n  \"data\": {\n    \"key_0\": true,\n    \"key_1\": false,\n    \"key_2\": true,\n    \"key_3\": true\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9cb75b66-c111-402b-be25-9e80d537dca1",
+              "name": "Rendered template output",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "render"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"template\": \"<string>\",\n  \"data\": {\n    \"key_0\": 5729.388688338189,\n    \"key_1\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4157f70e-7e1d-4d47-9ea1-b93cd9d77658",
+              "name": "Invalid template or data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "render"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"template\": \"<string>\",\n  \"data\": {\n    \"key_0\": 5729.388688338189,\n    \"key_1\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://generator3.swagger.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "eb432657-1592-438d-8a37-99d1bb97e930",
+    "name": "Swagger Generator API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Swagger Generator online REST API at generator3.swagger.io provides endpoints for generating client SDKs, server stubs, and documentation artifacts from OpenAPI V2 and V3 specifications. Supports 40+ client languages and 20+ server frameworks with configurable generation options.\n\nContact Support:\n Name: Swagger",
+      "type": "text/plain"
+    }
+  }
+}

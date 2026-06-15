@@ -1,89 +1,74 @@
-# Swagger Codegen
+# Swagger Codegen (swagger-codegen)
 
-Swagger Codegen is an open-source, template-driven code generation tool that automatically generates client libraries, server stubs, and API documentation from OpenAPI Specification definitions. It supports 40+ client languages and 20+ server frameworks. Available as a CLI, Docker image, Maven/Gradle plugin, and online REST API.
+Swagger Codegen is an open-source template-driven code generation tool that automatically generates client libraries, server stubs, and API documentation from OpenAPI Specification definitions. It supports 40+ client languages and 20+ server frameworks. Available as a CLI, Docker image, Maven/Gradle plugin, and online REST API at generator3.swagger.io.
 
-**URL:** [https://swagger.io/tools/swagger-codegen/](https://swagger.io/tools/swagger-codegen/)
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/swagger-codegen/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/swagger-codegen/refs/heads/main/apis.yml)
+
+## Scope
+
+- **Type:** Index
 
 ## Tags
 
-- Client Libraries, Code Generation, Open Source, OpenAPI, SDK
+- Client Libraries
+- Code Generation
+- Open Source
+- OpenAPI
+- SDK
+
+## Timestamps
+
+- **Created:** 2026-03-16
+- **Modified:** 2026-05-19
 
 ## APIs
 
 ### Swagger Generator API
 
-Online REST API at generator3.swagger.io for generating client SDKs and server stubs from OpenAPI V2/V3 specifications.
+The Swagger Generator online API at generator3.swagger.io provides REST endpoints for generating client SDKs, server stubs, and documentation artifacts from OpenAPI V2 and V3 specifications. Supports 40+ client and 20+ server generator targets with configurable options.
 
-**Human URL:** [https://generator3.swagger.io/](https://generator3.swagger.io/)
+- **Human URL:** [https://generator3.swagger.io/](https://generator3.swagger.io/)
+- **Base URL:** `https://generator3.swagger.io`
 
 #### Tags
 
-- Client Libraries, Code Generation, Generator, OpenAPI, SDK, Server Stubs
+- Client Libraries
+- Code Generation
+- Generator
+- OpenAPI
+- SDK
+- Server Stubs
 
 #### Properties
 
 - [Documentation](https://github.com/swagger-api/swagger-codegen/wiki)
-- [OpenAPI](openapi/swagger-generator-openapi.yml)
-- [OpenAPI Source](https://generator3.swagger.io/openapi.json)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/swagger-codegen/refs/heads/main/openapi/swagger-generator-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Open A P I  Source](https://generator3.swagger.io/openapi.json)
 - [GitHub Repository](https://github.com/swagger-api/swagger-codegen)
+- [Postman Collection](collections/swagger-generator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/swagger-generator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ### Swagger Codegen CLI
 
-Command-line interface for local code generation with full template customization.
+The Swagger Codegen command-line interface for generating code artifacts locally. Available as a JAR file and Docker image. Supports the same generators as the online API with additional template customization.
 
-**Human URL:** [https://github.com/swagger-api/swagger-codegen#getting-started](https://github.com/swagger-api/swagger-codegen#getting-started)
+- **Human URL:** [https://github.com/swagger-api/swagger-codegen#getting-started](https://github.com/swagger-api/swagger-codegen#getting-started)
 
-## Artifacts
+#### Tags
 
-### OpenAPI
+- CLI
+- Code Generation
+- Command Line
+- Docker
 
-| File | Description |
-|---|---|
-| [openapi/swagger-generator-openapi.yml](openapi/swagger-generator-openapi.yml) | Swagger Generator API — online code generation REST API |
+#### Properties
 
-### Rules
-
-| File | Description |
-|---|---|
-| [rules/swagger-codegen-rules.yml](rules/swagger-codegen-rules.yml) | Spectral ruleset for Swagger Generator API conventions |
-
-### Capabilities
-
-| File | Description |
-|---|---|
-| [capabilities/code-generation.yaml](capabilities/code-generation.yaml) | Code generation workflow capability |
-| [capabilities/shared/swagger-generator.yaml](capabilities/shared/swagger-generator.yaml) | Shared Swagger Generator API definitions |
-
-### JSON Schema
-
-| File | Description |
-|---|---|
-| [json-schema/swagger-codegen-generation-request-schema.json](json-schema/swagger-codegen-generation-request-schema.json) | JSON Schema for GenerationRequest |
-
-### JSON Structure
-
-| File | Description |
-|---|---|
-| [json-structure/swagger-codegen-structure.json](json-structure/swagger-codegen-structure.json) | GenerationRequest structural documentation |
-
-### JSON-LD
-
-| File | Description |
-|---|---|
-| [json-ld/swagger-codegen-context.jsonld](json-ld/swagger-codegen-context.jsonld) | JSON-LD context for Swagger Codegen concepts |
-
-### Examples
-
-| File | Description |
-|---|---|
-| [examples/swagger-codegen-generate-python-client-example.json](examples/swagger-codegen-generate-python-client-example.json) | Example: Generate Python client SDK |
-| [examples/swagger-codegen-list-languages-example.json](examples/swagger-codegen-list-languages-example.json) | Example: List available client generator languages |
-
-### Vocabulary
-
-| File | Description |
-|---|---|
-| [vocabulary/swagger-codegen-vocabulary.yml](vocabulary/swagger-codegen-vocabulary.yml) | Swagger Codegen domain vocabulary |
+- [Documentation](https://github.com/swagger-api/swagger-codegen/wiki)
+- [Getting Started](https://github.com/swagger-api/swagger-codegen#getting-started)
+- [Docker](https://hub.docker.com/r/swaggerapi/swagger-codegen-cli-v3)
+- [Package](https://mvnrepository.com/artifact/io.swagger.codegen.v3/swagger-codegen-cli)
+- [Postman Collection](collections/swagger-generator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/swagger-generator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ## Common Properties
 
@@ -93,14 +78,13 @@ Command-line interface for local code generation with full template customizatio
 - [GitHub Organization](https://github.com/swagger-api)
 - [GitHub Repository](https://github.com/swagger-api/swagger-codegen)
 - [Issues](https://github.com/swagger-api/swagger-codegen/issues)
+- [Releases](https://github.com/swagger-api/swagger-codegen/releases)
 - [License](https://github.com/swagger-api/swagger-codegen/blob/master/LICENSE)
+- [Docker](https://hub.docker.com/r/swaggerapi/swagger-codegen-cli-v3)
+- [Maven  Plugin](https://mvnrepository.com/artifact/io.swagger.codegen.v3/swagger-codegen-maven-plugin)
+- [Gradle  Plugin](https://plugins.gradle.org/plugin/org.hidetake.swagger.generator)
 
 ## Maintainers
 
 **FN:** Kin Lane
 **Email:** kin@apievangelist.com
-
-## Timestamps
-
-- **Created:** 2026-03-16
-- **Modified:** 2026-05-02
