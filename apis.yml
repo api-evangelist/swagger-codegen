@@ -76,7 +76,7 @@ common:
     url: https://github.com/swagger-api/swagger-codegen
   - type: Issues
     url: https://github.com/swagger-api/swagger-codegen/issues
-  - type: Releases
+  - type: ReleaseNotes
     url: https://github.com/swagger-api/swagger-codegen/releases
   - type: License
     url: https://github.com/swagger-api/swagger-codegen/blob/master/LICENSE
