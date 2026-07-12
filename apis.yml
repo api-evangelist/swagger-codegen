@@ -64,6 +64,8 @@ apis:
       - type: Package
         url: https://mvnrepository.com/artifact/io.swagger.codegen.v3/swagger-codegen-cli
 common:
+  - type: DomainSecurity
+    url: security/swagger-codegen-domain-security.yml
   - type: Portal
     url: https://swagger.io/tools/swagger-codegen/
   - type: Documentation
