@@ -64,6 +64,8 @@ apis:
       - type: Package
         url: https://mvnrepository.com/artifact/io.swagger.codegen.v3/swagger-codegen-cli
 common:
+  - type: AgenticAccess
+    url: agentic-access/swagger-codegen-agentic-access.yml
   - type: DomainSecurity
     url: security/swagger-codegen-domain-security.yml
   - type: Portal
