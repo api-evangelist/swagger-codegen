@@ -1,0 +1,168 @@
+openapi: 3.0.1
+info:
+  title: Swagger Generator Generation Utilities API
+  description: The Swagger Generator online REST API at generator3.swagger.io provides endpoints for generating client SDKs, server stubs, and documentation artifacts from OpenAPI V2 and V3 specifications. Supports 40+ client languages and 20+ server frameworks with configurable generation options.
+  version: 3.0.75
+  contact:
+    name: Swagger
+    url: https://swagger.io/tools/swagger-codegen/
+  license:
+    name: Apache 2.0
+    url: https://github.com/swagger-api/swagger-codegen/blob/master/LICENSE
+  x-logo:
+    url: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+servers:
+- url: https://generator3.swagger.io
+  description: Swagger Generator V3 online service
+tags:
+- name: Utilities
+  description: Template rendering and intermediate model generation
+paths:
+  /model:
+    post:
+      operationId: generateModel
+      summary: Generate Intermediate Model
+      description: Generates and returns the intermediate representation (bundle/model) of the code generation process as a JSON object. Useful for debugging and template development.
+      tags:
+      - Utilities
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerationRequest'
+      responses:
+        '200':
+          description: Intermediate model as a JSON object
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request
+  /render:
+    post:
+      operationId: renderTemplate
+      summary: Render Template
+      description: Render a Mustache template using provided data. Useful for testing custom generator templates without running a full code generation pass.
+      tags:
+      - Utilities
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RenderRequest'
+      responses:
+        '200':
+          description: Rendered template output
+        '400':
+          description: Invalid template or data
+components:
+  schemas:
+    RenderRequest:
+      type: object
+      description: Request body for template rendering
+      properties:
+        template:
+          type: string
+          description: Mustache template string to render
+        data:
+          type: object
+          description: Data object to apply to the template
+          additionalProperties: true
+    GenerationRequest:
+      type: object
+      required:
+      - lang
+      description: Request body for code generation operations
+      properties:
+        lang:
+          type: string
+          description: The generator language/framework identifier (e.g., python, java, spring)
+        type:
+          type: string
+          enum:
+          - CLIENT
+          - SERVER
+          - DOCUMENTATION
+          - CONFIG
+          description: Generator type
+        codegenVersion:
+          type: string
+          enum:
+          - V2
+          - V3
+          default: V3
+          description: Codegen version — V2 for OpenAPI 2.x specs, V3 for OpenAPI 3.x
+        spec:
+          type: object
+          description: Inline OpenAPI specification as a JSON object
+          additionalProperties: true
+        specURL:
+          type: string
+          format: uri
+          description: URL to a remote OpenAPI specification file
+        options:
+          $ref: '#/components/schemas/Options'
+    Options:
+      type: object
+      description: Configurable code generation options. Available options vary per language. Retrieve available options for a language via GET /options.
+      properties:
+        packageName:
+          type: string
+          description: Package/module name for the generated code
+        packageVersion:
+          type: string
+          description: Version to set in the generated package metadata
+        groupId:
+          type: string
+          description: Maven groupId for Java-based generators
+        artifactId:
+          type: string
+          description: Maven artifactId for Java-based generators
+        artifactVersion:
+          type: string
+          description: Maven artifact version
+        sourceFolder:
+          type: string
+          description: Source code folder path within the generated project
+        modelPackage:
+          type: string
+          description: Package name for generated model classes
+        apiPackage:
+          type: string
+          description: Package name for generated API client classes
+        invokerPackage:
+          type: string
+          description: Package name for generated invoker/entry-point classes
+        httpUserAgent:
+          type: string
+          description: User-Agent string set in generated HTTP client code
+        gitUserId:
+          type: string
+          description: GitHub user ID for SCM metadata in generated packages
+        gitRepoId:
+          type: string
+          description: GitHub repository ID for SCM metadata in generated packages
+        hideGenerationTimestamp:
+          type: boolean
+          description: Omit generation timestamp from generated file headers
+        dateLibrary:
+          type: string
+          description: Date/time library to use in generated code
+        useRxJS6:
+          type: boolean
+          description: Use RxJS 6 in TypeScript Angular generators
+        npmName:
+          type: string
+          description: npm package name for JavaScript/TypeScript generators
+        npmVersion:
+          type: string
+          description: npm package version
+        npmRepository:
+          type: string
+          description: npm registry URL
+        withSeparateModelsAndApi:
+          type: boolean
+          description: Put models and API in separate source folders

@@ -1,0 +1,80 @@
+openapi: 3.0.1
+info:
+  title: Swagger Generator Generation Options API
+  description: The Swagger Generator online REST API at generator3.swagger.io provides endpoints for generating client SDKs, server stubs, and documentation artifacts from OpenAPI V2 and V3 specifications. Supports 40+ client languages and 20+ server frameworks with configurable generation options.
+  version: 3.0.75
+  contact:
+    name: Swagger
+    url: https://swagger.io/tools/swagger-codegen/
+  license:
+    name: Apache 2.0
+    url: https://github.com/swagger-api/swagger-codegen/blob/master/LICENSE
+  x-logo:
+    url: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+servers:
+- url: https://generator3.swagger.io
+  description: Swagger Generator V3 online service
+tags:
+- name: Options
+  description: Retrieve per-language configuration options
+paths:
+  /options:
+    get:
+      operationId: listOptions
+      summary: List Generator Options
+      description: Returns the configurable options available for a specific generator language and OpenAPI version. Options control naming, packaging, type mappings, and other generation behaviors.
+      tags:
+      - Options
+      parameters:
+      - name: language
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Generator language identifier (e.g., python, java, typescript-axios)
+      - name: version
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - V2
+          - V3
+          default: V3
+        description: OpenAPI version (defaults to V3)
+      responses:
+        '200':
+          description: Map of option keys to CliOption descriptors
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/CliOption'
+components:
+  schemas:
+    CliOption:
+      type: object
+      description: Metadata describing a single configurable generator option
+      properties:
+        optionName:
+          type: string
+          description: The option key name
+        description:
+          type: string
+          description: Human-readable description of what this option controls
+        type:
+          type: string
+          enum:
+          - string
+          - boolean
+          - integer
+          description: Option value type
+        default:
+          type: string
+          description: Default value for this option
+        enum:
+          type: object
+          description: Allowed enum values and their descriptions (if applicable)
+          additionalProperties:
+            type: string

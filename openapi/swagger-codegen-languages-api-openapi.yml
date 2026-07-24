@@ -1,0 +1,97 @@
+openapi: 3.0.1
+info:
+  title: Swagger Generator Generation Languages API
+  description: The Swagger Generator online REST API at generator3.swagger.io provides endpoints for generating client SDKs, server stubs, and documentation artifacts from OpenAPI V2 and V3 specifications. Supports 40+ client languages and 20+ server frameworks with configurable generation options.
+  version: 3.0.75
+  contact:
+    name: Swagger
+    url: https://swagger.io/tools/swagger-codegen/
+  license:
+    name: Apache 2.0
+    url: https://github.com/swagger-api/swagger-codegen/blob/master/LICENSE
+  x-logo:
+    url: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+servers:
+- url: https://generator3.swagger.io
+  description: Swagger Generator V3 online service
+tags:
+- name: Languages
+  description: Discover available generator languages and types
+paths:
+  /{type}/{version}:
+    get:
+      operationId: listLanguages
+      summary: List Generator Languages
+      description: Returns the list of available generator language identifiers for the given generator type (client, server, documentation, config) and OpenAPI version (V2 or V3).
+      tags:
+      - Languages
+      parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - client
+          - server
+          - documentation
+          - config
+        description: Generator type to list
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - V2
+          - V3
+        description: OpenAPI specification version
+      responses:
+        '200':
+          description: Array of language/framework identifier strings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+              example:
+              - python
+              - java
+              - go
+              - typescript-axios
+              - kotlin-client
+        '400':
+          description: Invalid type or version
+  /types:
+    get:
+      operationId: listLanguagesMulti
+      summary: List Languages by Multiple Types
+      description: Returns the list of available generator languages filtered by a comma- separated list of generator types and an optional OpenAPI version.
+      tags:
+      - Languages
+      parameters:
+      - name: types
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Comma-separated list of generator types (client,server,documentation,config)
+      - name: version
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - V2
+          - V3
+        description: OpenAPI specification version filter
+      responses:
+        '200':
+          description: Array of language identifier strings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
