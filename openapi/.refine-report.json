@@ -1,0 +1,20 @@
+{
+  "provider": "swagger-codegen",
+  "sources": [
+    "swagger-codegen-generation-api-openapi.yml",
+    "swagger-codegen-languages-api-openapi.yml",
+    "swagger-codegen-options-api-openapi.yml",
+    "swagger-codegen-utilities-api-openapi.yml"
+  ],
+  "outputs": [
+    "swagger-codegen-generation-api-openapi.yml",
+    "swagger-codegen-languages-api-openapi.yml",
+    "swagger-codegen-options-api-openapi.yml",
+    "swagger-codegen-utilities-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
