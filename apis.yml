@@ -27,7 +27,7 @@ tags:
   - SDK
 url: https://raw.githubusercontent.com/api-evangelist/swagger-codegen/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-05-19'
+modified: '2026-08-06'
 specificationVersion: '0.19'
 apis:
 - aid: swagger-codegen:swagger-codegen-cli
@@ -54,64 +54,100 @@ apis:
   name: Swagger Codegen Generation API
   description: Code generation endpoints for clients, servers, and documentation
   humanURL: https://generator3.swagger.io/
-  baseURL: https://generator3.swagger.io
+  baseURL: https://generator3.swagger.io/api
   tags:
   - Generation
   properties:
   - type: OpenAPI
     url: openapi/swagger-codegen-generation-api-openapi.yml
+  - type: Overlay
+    url: overlays/swagger-codegen-generation-api-overlay.yaml
   - type: Documentation
     url: https://github.com/swagger-api/swagger-codegen/wiki
   - type: OpenAPI Source
     url: https://generator3.swagger.io/openapi.json
+  - type: OpenAPI Original
+    url: openapi/_original/swagger-generator-v3-openapi-original.json
   - type: GitHubRepository
     url: https://github.com/swagger-api/swagger-codegen
 - aid: swagger-codegen:swagger-codegen-languages-api
   name: Swagger Codegen Languages API
   description: Discover available generator languages and types
   humanURL: https://generator3.swagger.io/
-  baseURL: https://generator3.swagger.io
+  baseURL: https://generator3.swagger.io/api
   tags:
   - Languages
   properties:
   - type: OpenAPI
     url: openapi/swagger-codegen-languages-api-openapi.yml
+  - type: Overlay
+    url: overlays/swagger-codegen-languages-api-overlay.yaml
   - type: Documentation
     url: https://github.com/swagger-api/swagger-codegen/wiki
   - type: OpenAPI Source
     url: https://generator3.swagger.io/openapi.json
+  - type: OpenAPI Original
+    url: openapi/_original/swagger-generator-v3-openapi-original.json
   - type: GitHubRepository
     url: https://github.com/swagger-api/swagger-codegen
 - aid: swagger-codegen:swagger-codegen-options-api
   name: Swagger Codegen Options API
   description: Retrieve per-language configuration options
   humanURL: https://generator3.swagger.io/
-  baseURL: https://generator3.swagger.io
+  baseURL: https://generator3.swagger.io/api
   tags:
   - Options
   properties:
   - type: OpenAPI
     url: openapi/swagger-codegen-options-api-openapi.yml
+  - type: Overlay
+    url: overlays/swagger-codegen-options-api-overlay.yaml
   - type: Documentation
     url: https://github.com/swagger-api/swagger-codegen/wiki
   - type: OpenAPI Source
     url: https://generator3.swagger.io/openapi.json
+  - type: OpenAPI Original
+    url: openapi/_original/swagger-generator-v3-openapi-original.json
   - type: GitHubRepository
     url: https://github.com/swagger-api/swagger-codegen
 - aid: swagger-codegen:swagger-codegen-utilities-api
   name: Swagger Codegen Utilities API
   description: Template rendering and intermediate model generation
   humanURL: https://generator3.swagger.io/
-  baseURL: https://generator3.swagger.io
+  baseURL: https://generator3.swagger.io/api
   tags:
   - Utilities
   properties:
   - type: OpenAPI
     url: openapi/swagger-codegen-utilities-api-openapi.yml
+  - type: Overlay
+    url: overlays/swagger-codegen-utilities-api-overlay.yaml
   - type: Documentation
     url: https://github.com/swagger-api/swagger-codegen/wiki
   - type: OpenAPI Source
     url: https://generator3.swagger.io/openapi.json
+  - type: OpenAPI Original
+    url: openapi/_original/swagger-generator-v3-openapi-original.json
+  - type: GitHubRepository
+    url: https://github.com/swagger-api/swagger-codegen
+- aid: swagger-codegen:swagger-generator-v2-api
+  name: Swagger Generator V2 API
+  description: >-
+    The legacy 2.x Swagger Generator service at generator.swagger.io, still maintained alongside the 3.x line
+    (v2.4.52 released 2026-04-15). Generates clients and server stubs from Swagger 1.x/2.0 definitions. Unlike
+    the 3.x service it is asynchronous: generateClient returns a fileId which is then retrieved via downloadFile.
+  humanURL: https://generator.swagger.io/
+  baseURL: https://generator.swagger.io/api
+  tags:
+  - Generation
+  - Legacy
+  properties:
+  - type: OpenAPI
+    url: openapi/_original/swagger-generator-v2-swagger-original.json
+  - type: OpenAPI Source
+    url: https://generator.swagger.io/api/swagger.json
+  - type: Documentation
+    url: https://github.com/swagger-api/swagger-codegen/wiki
   - type: GitHubRepository
     url: https://github.com/swagger-api/swagger-codegen
 common:
@@ -141,6 +177,62 @@ common:
     url: https://mvnrepository.com/artifact/io.swagger.codegen.v3/swagger-codegen-maven-plugin
   - type: Gradle Plugin
     url: https://plugins.gradle.org/plugin/org.hidetake.swagger.generator
+  - type: Packages
+    url: packages/swagger-codegen-packages.yml
+  - type: SDKs
+    url: packages/swagger-codegen-packages.yml
+  - type: CLI
+    url: cli/swagger-codegen-cli.yml
+  - type: Authentication
+    url: authentication/swagger-codegen-authentication.yml
+  - type: Conventions
+    url: conventions/swagger-codegen-conventions.yml
+  - type: ErrorCatalog
+    url: errors/swagger-codegen-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/swagger-codegen-lifecycle.yml
+  - type: Deprecation
+    url: lifecycle/swagger-codegen-lifecycle.yml
+  - type: StatusPage
+    url: https://status.smartbear.com/
+  - type: ChangeLog
+    url: changelog/swagger-codegen-changelog.yml
+  - type: DataModel
+    url: data-model/swagger-codegen-data-model.yml
+  - type: Conformance
+    url: conformance/swagger-codegen-conformance.yml
+  - type: Compliance
+    url: https://trust.smartbear.com/
+  - type: TrustCenter
+    url: security/swagger-codegen-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/swagger-codegen-vulnerability-disclosure.yml
+  - type: Security
+    url: https://smartbear.com/security/
+  - type: Sandbox
+    url: sandbox/swagger-codegen-sandbox.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: LLMsTxt
+    url: llms/swagger-codegen-llms.txt
+  - type: APIReference
+    url: https://generator3.swagger.io/
+  - type: GettingStarted
+    url: https://github.com/swagger-api/swagger-codegen#getting-started
+  - type: Support
+    url: https://swagger.io/support/
+  - type: Blog
+    url: https://swagger.io/blog/
+  - type: TermsOfService
+    url: https://smartbear.com/terms-of-use/
+  - type: PrivacyPolicy
+    url: https://smartbear.com/privacy/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+
+x-enrichment:
+  date: '2026-08-06'
+  status: enriched
+  artifacts_added: 25
+  pass: local-v1
