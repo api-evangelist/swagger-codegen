@@ -130,27 +130,9 @@ apis:
     url: openapi/_original/swagger-generator-v3-openapi-original.json
   - type: GitHubRepository
     url: https://github.com/swagger-api/swagger-codegen
-- aid: swagger-codegen:swagger-generator-v2-api
-  name: Swagger Generator V2 API
-  description: >-
-    The legacy 2.x Swagger Generator service at generator.swagger.io, still maintained alongside the 3.x line
-    (v2.4.52 released 2026-04-15). Generates clients and server stubs from Swagger 1.x/2.0 definitions. Unlike
-    the 3.x service it is asynchronous: generateClient returns a fileId which is then retrieved via downloadFile.
-  humanURL: https://generator.swagger.io/
-  baseURL: https://generator.swagger.io/api
-  tags:
-  - Generation
-  - Legacy
-  properties:
-  - type: OpenAPI
-    url: openapi/_original/swagger-generator-v2-swagger-original.json
-  - type: OpenAPI Source
-    url: https://generator.swagger.io/api/swagger.json
-  - type: Documentation
-    url: https://github.com/swagger-api/swagger-codegen/wiki
-  - type: GitHubRepository
-    url: https://github.com/swagger-api/swagger-codegen
 common:
+  - type: MCPServer
+    url: mcp/swagger-codegen-mcp.yml
   - type: AgenticAccess
     url: agentic-access/swagger-codegen-agentic-access.yml
   - type: DomainSecurity
