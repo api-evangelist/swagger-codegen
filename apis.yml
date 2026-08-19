@@ -28,7 +28,7 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/swagger-codegen/refs/heads/main/apis.yml
 created: '2026-03-16'
 modified: '2026-08-06'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: swagger-codegen:swagger-codegen-cli
   name: Swagger Codegen CLI
