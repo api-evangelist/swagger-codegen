@@ -1,0 +1,66 @@
+generated: '2026-08-06'
+method: probed
+source: https://generator3.swagger.io/openapi.json
+format: plain-text
+rfc9457: false
+envelope:
+  content_type: text/plain
+  shape: >-
+    Application-level errors are returned as a bare plain-text sentence in the
+    body with an HTTP 4xx status. There is no JSON error object, no error code,
+    no type URI and no correlation id. Container-level errors (unmatched routes,
+    unhandled exceptions) are returned as Jetty's HTML error page.
+spec_gap: >-
+  Neither published contract declares a single non-2xx response. Every operation
+  in the v3 spec declares only '200'. The error behaviour below was observed by
+  probing the live service, not read from the contract — an agent reading the
+  spec alone would have no error model at all.
+problems:
+  - status: 400
+    title: Unsupported target language
+    detail_observed: 'Unsupported target zzz supplied.'
+    content_type: text/plain
+    cause: The language/framework identifier is not in the generator list for that type and version.
+    remediation: Call listOptions or languages first and use an identifier from the returned array.
+    observed_at: 'https://generator3.swagger.io/api/options?language=zzz'
+    source_operation: openapi/swagger-codegen-options-api-openapi.yml#listOptions
+    declared_in_spec: false
+  - status: 400
+    title: Missing input specification
+    detail_observed: >-
+      Error processing generation request: Error processing input options: input
+      spec or URL must be specified
+    content_type: text/plain
+    cause: The GenerationRequest body carried neither an inline spec nor a specURL.
+    remediation: Supply exactly one of spec (inline object) or specURL (remote URL) in the request body.
+    observed_at: 'https://generator3.swagger.io/api/generate'
+    source_operation: openapi/swagger-codegen-generation-api-openapi.yml#generate
+    declared_in_spec: false
+  - status: 404
+    title: Unknown route
+    content_type: text/html
+    cause: Path does not match any declared operation.
+    remediation: Check the path against the published contract; remember the base path is /api.
+    observed_at: 'https://generator3.swagger.io/api/nonexistent'
+    declared_in_spec: false
+    note: Returned as a Jetty HTML error page, not JSON.
+  - status: 500
+    title: Request failed
+    content_type: text/html
+    cause: >-
+      Raised for a malformed but route-matching request — e.g. an invalid
+      generator type on /{type}/{version}. The service surfaces an internal
+      failure rather than validating the path parameter into a 400.
+    remediation: Constrain type to client|server|documentation|config and version to V2|V3 before calling.
+    observed_at: 'https://generator3.swagger.io/api/foo/V9'
+    source_operation: openapi/swagger-codegen-languages-api-openapi.yml#languages
+    declared_in_spec: false
+    note: >-
+      GET /api/types with no query parameters also returned 500 during this
+      probe, so languagesMulti is not safely callable without arguments.
+evidence:
+  - {url: 'https://generator3.swagger.io/api/options?language=zzz', http_status: 400, fetched: '2026-08-06'}
+  - {url: 'https://generator3.swagger.io/api/generate', http_status: 400, method: POST, fetched: '2026-08-06'}
+  - {url: 'https://generator3.swagger.io/api/nonexistent', http_status: 404, fetched: '2026-08-06'}
+  - {url: 'https://generator3.swagger.io/api/foo/V9', http_status: 500, fetched: '2026-08-06'}
+  - {url: 'https://generator3.swagger.io/api/types', http_status: 500, fetched: '2026-08-06'}

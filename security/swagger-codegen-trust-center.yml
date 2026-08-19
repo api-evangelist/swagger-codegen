@@ -1,0 +1,29 @@
+generated: '2026-08-06'
+method: searched
+probe: true
+url: https://trust.smartbear.com/
+publisher: SmartBear Software
+certifications:
+  - SOC 2
+  - ISO/IEC 27001
+  - GDPR
+  - CCPA
+  - NIST CSF
+frameworks_detail:
+  - {name: SOC 2, label: Service Organization Control}
+  - {name: ISO/IEC 27001, label: Information Security Management}
+  - {name: 'GDPR & CCPA', label: Global Privacy Regulations}
+  - {name: NIST CSF, label: Cybersecurity Framework}
+related:
+  security_page: https://smartbear.com/security/
+  privacy: https://smartbear.com/privacy/
+  terms: https://smartbear.com/terms-of-use/
+scope_caveat: >-
+  The trust center covers SmartBear the vendor and its commercial products.
+  Swagger Codegen is Apache-2.0 open source and generator3.swagger.io is a free
+  unauthenticated convenience service with no SLA — the corporate attestations
+  should not be read as covering that endpoint.
+evidence:
+  - {source: 'https://trust.smartbear.com/', http_status: 200, keywords: ['soc 2', 'iso/iec 27001', gdpr, ccpa, nist], fetched: '2026-08-06'}
+  - {source: 'https://smartbear.com/security/', http_status: 200, keywords: ['soc 2', 'iso/iec 27001', gdpr, 'trust center'], fetched: '2026-08-06'}
+  - {source: 'https://smartbear.com/trust-center/', http_status: 404, note: 'canonical host is trust.smartbear.com, not a path on the main site', fetched: '2026-08-06'}

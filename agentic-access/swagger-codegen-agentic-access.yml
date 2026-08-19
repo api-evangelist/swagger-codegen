@@ -1,22 +1,23 @@
-generated: '2026-07-15'
+generated: '2026-08-06'
 method: generated
-source: openapi/swagger-generator-openapi.yml
+source: openapi/swagger-codegen-generation-api-openapi.yml, openapi/swagger-codegen-languages-api-openapi.yml,
+  openapi/swagger-codegen-options-api-openapi.yml, openapi/swagger-codegen-utilities-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 7
+  operations: 10
   by_action_class:
     acting: 3
-    connected: 4
+    connected: 7
   by_consequence:
     write: 3
-    read: 4
+    read: 7
   human_in_the_loop_required: 0
 operations:
 - path: /generate
   method: post
-  operationId: generateCode
+  operationId: generate
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -32,7 +33,7 @@ operations:
     audit: required
 - path: /generate
   method: get
-  operationId: generateCodeFromUrl
+  operationId: generateFromURL
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -42,7 +43,7 @@ operations:
     audit: none
 - path: /{type}/{version}
   method: get
-  operationId: listLanguages
+  operationId: languages
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -52,7 +53,37 @@ operations:
     audit: none
 - path: /types
   method: get
-  operationId: listLanguagesMulti
+  operationId: languagesMulti
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /clients
+  method: get
+  operationId: clientLanguages
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /servers
+  method: get
+  operationId: serverLanguages
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /documentation
+  method: get
+  operationId: documentationLanguages
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -72,7 +103,7 @@ operations:
     audit: none
 - path: /model
   method: post
-  operationId: generateModel
+  operationId: generateBundle
   x-agentic-access:
     action-class: acting
     consequence: write

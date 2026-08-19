@@ -1,0 +1,60 @@
+generated: '2026-08-06'
+method: searched
+source: https://api.github.com/repos/swagger-api/swagger-codegen/releases
+versioning:
+  scheme: two-parallel-major-lines
+  current: 3.0.82
+  docs: https://github.com/swagger-api/swagger-codegen#compatibility
+  lines:
+    - line: '3.x'
+      artifact_group: io.swagger.codegen.v3
+      spec_support: 'OpenAPI 1.0, 1.1, 1.2, 2.0, 3.0'
+      current: 3.0.82
+      released: '2026-08-04'
+      status: active
+      service_host: https://generator3.swagger.io
+    - line: '2.x'
+      artifact_group: io.swagger
+      spec_support: 'Swagger 1.0, 1.1, 1.2, 2.0'
+      current: 2.4.52
+      released: '2026-04-15'
+      status: maintenance
+      service_host: https://generator.swagger.io
+  api_versioning: >-
+    The hosted API is not versioned in the URI. Generator version is selected
+    per request instead — the codegenVersion field on GenerationRequest and the
+    version path/query parameter on the language endpoints (V2 | V3). The two
+    generator generations are split across two hostnames rather than two paths.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  in_spec: true
+  mechanism: >-
+    Deprecation is declared in the contract itself — three operations carry
+    deprecated: true with the replacement named in the summary. There is no
+    written deprecation policy, no Sunset/Deprecation response header, and no
+    published removal date.
+deprecated_operations:
+  - operation: openapi/swagger-codegen-languages-api-openapi.yml#clientLanguages
+    replacement: languages
+    upstream_note: "Deprecated, use '/{type}/{version}' instead."
+  - operation: openapi/swagger-codegen-languages-api-openapi.yml#serverLanguages
+    replacement: languages
+    upstream_note: "Deprecated, use '/{type}/{version}' instead."
+  - operation: openapi/swagger-codegen-languages-api-openapi.yml#documentationLanguages
+    replacement: languages
+    upstream_note: "Deprecated, use '/{type}/{version}' instead."
+sla:
+  url: null
+  uptime_target: null
+  note: >-
+    generator3.swagger.io is a free public convenience service with no published
+    SLA. Production use is expected to run the CLI, the Maven plugin, or the
+    self-hosted swaggerapi/swagger-generator Docker image.
+status_page: https://status.smartbear.com/
+support: https://swagger.io/support/
+issues: https://github.com/swagger-api/swagger-codegen/issues
+evidence:
+  - {url: 'https://api.github.com/repos/swagger-api/swagger-codegen/releases', http_status: 200, fetched: '2026-08-06'}
+  - {url: 'https://status.smartbear.com/', http_status: 200, title: 'SmartBear Product Status Information', fetched: '2026-08-06'}
+  - {url: 'https://generator3.swagger.io/openapi.json', http_status: 200, deprecated_ops: 3, fetched: '2026-08-06'}

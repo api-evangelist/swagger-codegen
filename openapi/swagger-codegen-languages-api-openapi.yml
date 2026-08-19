@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Swagger Generator Generation Languages API
   description: The Swagger Generator online REST API at generator3.swagger.io provides endpoints for generating client SDKs, server stubs, and documentation artifacts from OpenAPI V2 and V3 specifications. Supports 40+ client languages and 20+ server frameworks with configurable generation options.
@@ -12,15 +12,15 @@ info:
   x-logo:
     url: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 servers:
-- url: https://generator3.swagger.io
-  description: Swagger Generator V3 online service
+- url: https://generator3.swagger.io/api
+  description: Swagger Generator V3 online service (base path /api)
 tags:
 - name: Languages
   description: Discover available generator languages and types
 paths:
   /{type}/{version}:
     get:
-      operationId: listLanguages
+      operationId: languages
       summary: List Generator Languages
       description: Returns the list of available generator language identifiers for the given generator type (client, server, documentation, config) and OpenAPI version (V2 or V3).
       tags:
@@ -63,9 +63,10 @@ paths:
               - kotlin-client
         '400':
           description: Invalid type or version
+      x-upstream-summary: List generator languages of the given type and version
   /types:
     get:
-      operationId: listLanguagesMulti
+      operationId: languagesMulti
       summary: List Languages by Multiple Types
       description: Returns the list of available generator languages filtered by a comma- separated list of generator types and an optional OpenAPI version.
       tags:
@@ -95,3 +96,94 @@ paths:
                 type: array
                 items:
                   type: string
+      x-upstream-summary: List generator languages of version defined in 'version parameter (defaults to V3) and type included in 'types' parameter; all languages
+  /clients:
+    get:
+      operationId: clientLanguages
+      summary: Deprecated, use '/{type}/{version}' instead. List generator languages of type 'client' or 'documentation' for given codegen version (defaults to V3)
+      description: Deprecated, use '/{type}/{version}' instead. List generator languages of type 'client' or 'documentation' for given codegen version (defaults to V3)
+      deprecated: true
+      tags:
+      - Languages
+      parameters:
+      - name: version
+        in: query
+        description: generator version used by codegen engine
+        schema:
+          type: string
+          enum:
+          - V2
+          - V3
+          default: V3
+      - name: clientOnly
+        in: query
+        description: flag to only return languages of type `client`
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+      x-upstream-summary: Deprecated, use '/{type}/{version}' instead. List generator languages of type 'client' or 'documentation' for given codegen version (defaults to V3)
+  /servers:
+    get:
+      operationId: serverLanguages
+      summary: Deprecated, use '/{type}/{version}' instead. List generator languages of type 'server' for given codegen version (defaults to V3)
+      description: Deprecated, use '/{type}/{version}' instead. List generator languages of type 'server' for given codegen version (defaults to V3)
+      deprecated: true
+      tags:
+      - Languages
+      parameters:
+      - name: version
+        in: query
+        description: generator version used by codegen engine
+        schema:
+          type: string
+          enum:
+          - V2
+          - V3
+          default: V3
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+      x-upstream-summary: Deprecated, use '/{type}/{version}' instead. List generator languages of type 'server' for given codegen version (defaults to V3)
+  /documentation:
+    get:
+      operationId: documentationLanguages
+      summary: Deprecated, use '/{type}/{version}' instead. List generator languages of type 'documentation' for given codegen version (defaults to V3)
+      description: Deprecated, use '/{type}/{version}' instead. List generator languages of type 'documentation' for given codegen version (defaults to V3)
+      deprecated: true
+      tags:
+      - Languages
+      parameters:
+      - name: version
+        in: query
+        description: generator version used by codegen engine
+        schema:
+          type: string
+          enum:
+          - V2
+          - V3
+          default: V3
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+      x-upstream-summary: Deprecated, use '/{type}/{version}' instead. List generator languages of type 'documentation' for given codegen version (defaults to V3)

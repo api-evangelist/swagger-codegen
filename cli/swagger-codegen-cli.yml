@@ -1,0 +1,59 @@
+generated: '2026-08-06'
+method: searched
+source: https://github.com/swagger-api/swagger-codegen#getting-started
+name: swagger-codegen-cli
+description: >-
+  The first-party command line interface for Swagger Codegen. It is the same
+  generation engine that backs the hosted generator3.swagger.io service, run
+  locally, with the addition of custom template support. Distributed as an
+  executable JAR and as an official Docker image.
+install:
+  - method: jar
+    command: 'java -jar swagger-codegen-cli.jar'
+    download: https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/
+    note: Latest 3.x jar from Maven Central; 2.x jars live under io/swagger/swagger-codegen-cli/
+  - method: docker
+    command: 'docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli-v3 generate -i /local/spec.yaml -l python -o /local/out'
+    image: https://hub.docker.com/r/swaggerapi/swagger-codegen-cli-v3
+  - method: docker
+    command: 'docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli generate'
+    image: https://hub.docker.com/r/swaggerapi/swagger-codegen-cli
+    note: 2.x line image, documented in docs/docker.md
+  - method: build-from-source
+    command: 'mvn clean package && java -jar modules/swagger-codegen-cli/target/swagger-codegen-cli.jar'
+    source: https://github.com/swagger-api/swagger-codegen
+commands:
+  - name: generate
+    summary: Generate code with the chosen language/framework generator.
+    docs: 'java -jar swagger-codegen-cli.jar help generate'
+    key_flags:
+      - {flag: '-i, --input-spec', description: 'Location of the OpenAPI/Swagger spec (file or URL)'}
+      - {flag: '-l, --lang', description: 'Client language / server framework to generate'}
+      - {flag: '-o, --output', description: 'Output directory'}
+      - {flag: '-c, --config', description: 'Path to a JSON config file of generator options'}
+      - {flag: '-t, --template-dir', description: 'Directory of custom Mustache templates'}
+    api_equivalent: generate
+  - name: config-help
+    summary: Show the configuration options available for a given language.
+    example: 'java -jar swagger-codegen-cli.jar config-help -l php'
+    api_equivalent: listOptions
+  - name: langs
+    summary: List the available generator languages.
+    api_equivalent: languages
+  - name: meta
+    summary: Scaffold a new generator project (custom generator authoring).
+    api_equivalent: null
+  - name: help
+    summary: Per-command help, e.g. 'help generate'.
+    api_equivalent: null
+build_plugins:
+  - {kind: maven, artifact: 'io.swagger.codegen.v3:swagger-codegen-maven-plugin', url: 'https://mvnrepository.com/artifact/io.swagger.codegen.v3/swagger-codegen-maven-plugin'}
+  - {kind: gradle, artifact: 'org.hidetake.swagger.generator', url: 'https://plugins.gradle.org/plugin/org.hidetake.swagger.generator', official: false}
+relationship_to_api: >-
+  The CLI and the hosted API are two front doors onto the same engine. Every CLI
+  generate run has an API equivalent (POST /api/generate), and the language and
+  option discovery commands map onto languages and listOptions. The CLI adds
+  custom templates and local file output; the API adds nothing the CLI lacks.
+evidence:
+  - {url: 'https://raw.githubusercontent.com/swagger-api/swagger-codegen/master/README.md', http_status: 200, fetched: '2026-08-06'}
+  - {url: 'https://raw.githubusercontent.com/swagger-api/swagger-codegen/master/docs/docker.md', http_status: 200, fetched: '2026-08-06'}

@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Swagger Generator Generation Utilities API
   description: The Swagger Generator online REST API at generator3.swagger.io provides endpoints for generating client SDKs, server stubs, and documentation artifacts from OpenAPI V2 and V3 specifications. Supports 40+ client languages and 20+ server frameworks with configurable generation options.
@@ -12,15 +12,15 @@ info:
   x-logo:
     url: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 servers:
-- url: https://generator3.swagger.io
-  description: Swagger Generator V3 online service
+- url: https://generator3.swagger.io/api
+  description: Swagger Generator V3 online service (base path /api)
 tags:
 - name: Utilities
   description: Template rendering and intermediate model generation
 paths:
   /model:
     post:
-      operationId: generateModel
+      operationId: generateBundle
       summary: Generate Intermediate Model
       description: Generates and returns the intermediate representation (bundle/model) of the code generation process as a JSON object. Useful for debugging and template development.
       tags:
@@ -40,6 +40,7 @@ paths:
                 type: object
         '400':
           description: Invalid request
+      x-upstream-summary: Generates the intermediate model ("bundle") and returns it as a JSON. body.
   /render:
     post:
       operationId: renderTemplate
@@ -58,6 +59,7 @@ paths:
           description: Rendered template output
         '400':
           description: Invalid template or data
+      x-upstream-summary: render a template using the provided data
 components:
   schemas:
     RenderRequest:
@@ -71,40 +73,6 @@ components:
           type: object
           description: Data object to apply to the template
           additionalProperties: true
-    GenerationRequest:
-      type: object
-      required:
-      - lang
-      description: Request body for code generation operations
-      properties:
-        lang:
-          type: string
-          description: The generator language/framework identifier (e.g., python, java, spring)
-        type:
-          type: string
-          enum:
-          - CLIENT
-          - SERVER
-          - DOCUMENTATION
-          - CONFIG
-          description: Generator type
-        codegenVersion:
-          type: string
-          enum:
-          - V2
-          - V3
-          default: V3
-          description: Codegen version — V2 for OpenAPI 2.x specs, V3 for OpenAPI 3.x
-        spec:
-          type: object
-          description: Inline OpenAPI specification as a JSON object
-          additionalProperties: true
-        specURL:
-          type: string
-          format: uri
-          description: URL to a remote OpenAPI specification file
-        options:
-          $ref: '#/components/schemas/Options'
     Options:
       type: object
       description: Configurable code generation options. Available options vary per language. Retrieve available options for a language via GET /options.
@@ -166,3 +134,37 @@ components:
         withSeparateModelsAndApi:
           type: boolean
           description: Put models and API in separate source folders
+    GenerationRequest:
+      type: object
+      required:
+      - lang
+      description: Request body for code generation operations
+      properties:
+        lang:
+          type: string
+          description: The generator language/framework identifier (e.g., python, java, spring)
+        type:
+          type: string
+          enum:
+          - CLIENT
+          - SERVER
+          - DOCUMENTATION
+          - CONFIG
+          description: Generator type
+        codegenVersion:
+          type: string
+          enum:
+          - V2
+          - V3
+          default: V3
+          description: Codegen version — V2 for OpenAPI 2.x specs, V3 for OpenAPI 3.x
+        spec:
+          type: object
+          description: Inline OpenAPI specification as a JSON object
+          additionalProperties: true
+        specURL:
+          type: string
+          format: uri
+          description: URL to a remote OpenAPI specification file
+        options:
+          $ref: '#/components/schemas/Options'

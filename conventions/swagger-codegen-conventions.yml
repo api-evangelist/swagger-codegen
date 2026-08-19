@@ -1,0 +1,96 @@
+generated: '2026-08-06'
+method: probed
+source: https://generator3.swagger.io/openapi.json
+summary: >-
+  A small, unauthenticated, un-paginated RPC-flavoured service. Cross-cutting
+  semantics are mostly absent rather than unusual — no auth, no idempotency key,
+  no pagination, no request id, no rate-limit headers, no structured error
+  envelope. What an integrator needs to know is the base path (/api), the
+  V2-vs-V3 generator selector, and that responses are either a bare JSON array
+  or a binary ZIP.
+authentication:
+  style: none
+  detail: No securitySchemes declared; verified anonymous 200 on GET /api/clients.
+  artifact: authentication/swagger-codegen-authentication.yml
+base_path:
+  value: /api
+  detail: >-
+    The published contract declares servers: [{url: /api}] — a relative server.
+    Resolved against the document's own origin this is
+    https://generator3.swagger.io/api. Calling generator3.swagger.io/generate
+    without /api does not reach the API.
+idempotency:
+  supported: false
+  header: null
+  detail: >-
+    No Idempotency-Key header, parameter or extension anywhere in either
+    contract. POST /api/generate and POST /api/model are pure functions of their
+    request body — replaying an identical body produces an equivalent artifact —
+    but the service makes no idempotency guarantee and returns no idempotency
+    replay signal, so this is safe-by-nature rather than idempotent-by-contract.
+pagination:
+  supported: false
+  detail: >-
+    Collection endpoints (languages, languagesMulti, clientLanguages,
+    serverLanguages, documentationLanguages) return the complete array of
+    generator identifiers in a single response. No limit/offset/cursor
+    parameters, no envelope, no link headers. Bounded lists — the client array
+    is 24 entries.
+filtering:
+  detail: >-
+    Filtering is by path/query selector rather than by query language — type and
+    version on languages, types and version on languagesMulti, language and
+    version on listOptions.
+field_expansion:
+  supported: false
+metadata:
+  supported: false
+request_tracing:
+  request_id_header: null
+  detail: No request-id or correlation header is returned. Errors cannot be correlated with support.
+versioning:
+  style: per-request-selector
+  detail: >-
+    codegenVersion on GenerationRequest and the version parameter on the
+    language endpoints choose V2 or V3 generator behaviour. The URI itself is
+    unversioned; the two engine generations are separated by hostname
+    (generator.swagger.io = 2.x, generator3.swagger.io = 3.x).
+  artifact: lifecycle/swagger-codegen-lifecycle.yml
+error_envelope:
+  format: plain-text
+  rfc9457: false
+  detail: 4xx returns a bare sentence as text/plain; container errors return Jetty HTML.
+  artifact: errors/swagger-codegen-problem-types.yml
+rate_limiting:
+  headers: none
+  detail: >-
+    No RateLimit-* or X-RateLimit-* headers observed and no documented quota.
+    The service is free and shared, so clients must self-throttle; heavy or
+    automated use is expected to move to the CLI or the self-hosted
+    swaggerapi/swagger-generator image.
+  artifact: rate-limits/swagger-codegen-rate-limits.yml
+cors:
+  allow_origin: '*'
+  allow_methods: 'GET, POST, DELETE, PUT'
+  allow_headers: 'Content-Type, api_key, Authorization'
+  expose_headers: 'Content-Disposition'
+  detail: >-
+    Fully open CORS — the generator is callable directly from a browser. The
+    api_key and Authorization entries in allow-headers are vestigial; no
+    operation requires either.
+content_types:
+  request: application/json
+  responses:
+    - {operations: [generate, generateFromURL], content_type: application/octet-stream, shape: 'binary ZIP, filename in Content-Disposition'}
+    - {operations: [languages, languagesMulti, clientLanguages, serverLanguages, documentationLanguages], content_type: application/json, shape: 'array of strings'}
+    - {operations: [listOptions], content_type: application/json, shape: 'map of option name -> CliOption'}
+    - {operations: [generateBundle, renderTemplate], content_type: application/json, shape: object}
+input_contract:
+  detail: >-
+    GenerationRequest requires lang and exactly one of spec (inline OpenAPI
+    object) or specURL (remote URL). AuthorizationValue on the request is a
+    passthrough credential the generator uses to FETCH the caller's specURL —
+    it does not authenticate the caller to this service.
+evidence:
+  - {url: 'https://generator3.swagger.io/api/clients', http_status: 200, headers_observed: [access-control-allow-origin, access-control-expose-headers, server], fetched: '2026-08-06'}
+  - {url: 'https://generator3.swagger.io/openapi.json', http_status: 200, fetched: '2026-08-06'}

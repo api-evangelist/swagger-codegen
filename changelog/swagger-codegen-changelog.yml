@@ -1,0 +1,44 @@
+generated: '2026-08-06'
+method: searched
+source: https://github.com/swagger-api/swagger-codegen/releases
+scheme: semver
+current_version: 3.0.82
+window: 'six most recent releases across both maintained lines, as of 2026-08-06'
+notes: >-
+  The project publishes no prose changelog page; GitHub Releases is the dated
+  changelog of record, and the two maintained lines (3.x and 2.x) release
+  independently and interleave.
+entries:
+  - version: 3.0.82
+    date: '2026-08-04'
+    line: '3.x'
+    url: https://github.com/swagger-api/swagger-codegen/releases/tag/v3.0.82
+  - version: 3.0.81
+    date: '2026-05-18'
+    line: '3.x'
+    url: https://github.com/swagger-api/swagger-codegen/releases/tag/v3.0.81
+  - version: 3.0.80
+    date: '2026-05-14'
+    line: '3.x'
+    url: https://github.com/swagger-api/swagger-codegen/releases/tag/v3.0.80
+  - version: 3.0.79
+    date: '2026-04-22'
+    line: '3.x'
+    url: https://github.com/swagger-api/swagger-codegen/releases/tag/v3.0.79
+  - version: 2.4.52
+    date: '2026-04-15'
+    line: '2.x'
+    url: https://github.com/swagger-api/swagger-codegen/releases/tag/v2.4.52
+  - version: 2.4.51
+    date: '2026-03-12'
+    line: '2.x'
+    url: https://github.com/swagger-api/swagger-codegen/releases/tag/v2.4.51
+hosted_service_version: 3.0.75
+hosted_service_note: >-
+  generator3.swagger.io reports info.version 3.0.75 in its own contract while
+  the released CLI is at 3.0.82 — the hosted service trails the release line by
+  seven patch versions, so generator output from the API can differ from the
+  CLI at the same nominal major.
+evidence:
+  - {url: 'https://api.github.com/repos/swagger-api/swagger-codegen/releases?per_page=6', http_status: 200, fetched: '2026-08-06'}
+  - {url: 'https://generator3.swagger.io/openapi.json', http_status: 200, info_version: '3.0.75', fetched: '2026-08-06'}

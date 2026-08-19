@@ -1,0 +1,278 @@
+{
+  "item": [
+    {
+      "id": "81117ca4-e472-4e9c-9583-17c00d0061c5",
+      "name": "Utilities",
+      "description": {
+        "content": "Template rendering and intermediate model generation",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d5d3646e-76f4-4916-91dc-e87462fa5767",
+          "name": "Generate Intermediate Model",
+          "request": {
+            "name": "Generate Intermediate Model",
+            "description": {
+              "content": "Generates and returns the intermediate representation (bundle/model) of the code generation process as a JSON object. Useful for debugging and template development.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "model"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lang\": \"<string>\",\n  \"type\": \"<string>\",\n  \"codegenVersion\": \"V3\",\n  \"spec\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": 121,\n    \"key_3\": \"string\",\n    \"key_4\": 6878.850080458907\n  },\n  \"specURL\": \"<uri>\",\n  \"options\": {\n    \"packageName\": \"<string>\",\n    \"packageVersion\": \"<string>\",\n    \"groupId\": \"<string>\",\n    \"artifactId\": \"<string>\",\n    \"artifactVersion\": \"<string>\",\n    \"sourceFolder\": \"<string>\",\n    \"modelPackage\": \"<string>\",\n    \"apiPackage\": \"<string>\",\n    \"invokerPackage\": \"<string>\",\n    \"httpUserAgent\": \"<string>\",\n    \"gitUserId\": \"<string>\",\n    \"gitRepoId\": \"<string>\",\n    \"hideGenerationTimestamp\": \"<boolean>\",\n    \"dateLibrary\": \"<string>\",\n    \"useRxJS6\": \"<boolean>\",\n    \"npmName\": \"<string>\",\n    \"npmVersion\": \"<string>\",\n    \"npmRepository\": \"<string>\",\n    \"withSeparateModelsAndApi\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d466b95b-efd7-4a80-98d4-74cc6188c6ca",
+              "name": "Intermediate model as a JSON object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"<string>\",\n  \"type\": \"<string>\",\n  \"codegenVersion\": \"V3\",\n  \"spec\": {\n    \"key_0\": \"string\",\n    \"key_1\": 7085\n  },\n  \"specURL\": \"<uri>\",\n  \"options\": {\n    \"packageName\": \"<string>\",\n    \"packageVersion\": \"<string>\",\n    \"groupId\": \"<string>\",\n    \"artifactId\": \"<string>\",\n    \"artifactVersion\": \"<string>\",\n    \"sourceFolder\": \"<string>\",\n    \"modelPackage\": \"<string>\",\n    \"apiPackage\": \"<string>\",\n    \"invokerPackage\": \"<string>\",\n    \"httpUserAgent\": \"<string>\",\n    \"gitUserId\": \"<string>\",\n    \"gitRepoId\": \"<string>\",\n    \"hideGenerationTimestamp\": \"<boolean>\",\n    \"dateLibrary\": \"<string>\",\n    \"useRxJS6\": \"<boolean>\",\n    \"npmName\": \"<string>\",\n    \"npmVersion\": \"<string>\",\n    \"npmRepository\": \"<string>\",\n    \"withSeparateModelsAndApi\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d8ebbb7-87af-479e-8097-7856be961033",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "model"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lang\": \"<string>\",\n  \"type\": \"<string>\",\n  \"codegenVersion\": \"V3\",\n  \"spec\": {\n    \"key_0\": \"string\",\n    \"key_1\": 7085\n  },\n  \"specURL\": \"<uri>\",\n  \"options\": {\n    \"packageName\": \"<string>\",\n    \"packageVersion\": \"<string>\",\n    \"groupId\": \"<string>\",\n    \"artifactId\": \"<string>\",\n    \"artifactVersion\": \"<string>\",\n    \"sourceFolder\": \"<string>\",\n    \"modelPackage\": \"<string>\",\n    \"apiPackage\": \"<string>\",\n    \"invokerPackage\": \"<string>\",\n    \"httpUserAgent\": \"<string>\",\n    \"gitUserId\": \"<string>\",\n    \"gitRepoId\": \"<string>\",\n    \"hideGenerationTimestamp\": \"<boolean>\",\n    \"dateLibrary\": \"<string>\",\n    \"useRxJS6\": \"<boolean>\",\n    \"npmName\": \"<string>\",\n    \"npmVersion\": \"<string>\",\n    \"npmRepository\": \"<string>\",\n    \"withSeparateModelsAndApi\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f4d071a-6430-482e-b6e1-c4f44260b79a",
+          "name": "Render Template",
+          "request": {
+            "name": "Render Template",
+            "description": {
+              "content": "Render a Mustache template using provided data. Useful for testing custom generator templates without running a full code generation pass.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "render"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"template\": \"<string>\",\n  \"data\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5315563b-8f82-417a-841f-caa0e18e4134",
+              "name": "Rendered template output",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "render"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"template\": \"<string>\",\n  \"data\": {\n    \"key_0\": 7587.905076289585,\n    \"key_1\": 8513.921307811368\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a1f6bba8-c094-49a4-8401-57d20ce7a027",
+              "name": "Invalid template or data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "render"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"template\": \"<string>\",\n  \"data\": {\n    \"key_0\": 7587.905076289585,\n    \"key_1\": 8513.921307811368\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://generator3.swagger.io/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cabf7e9a-371e-4e87-bbe5-8ca4d2b567ef",
+    "name": "Swagger Generator Generation Utilities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Swagger Generator online REST API at generator3.swagger.io provides endpoints for generating client SDKs, server stubs, and documentation artifacts from OpenAPI V2 and V3 specifications. Supports 40+ client languages and 20+ server frameworks with configurable generation options.\n\nContact Support:\n Name: Swagger",
+      "type": "text/plain"
+    }
+  }
+}

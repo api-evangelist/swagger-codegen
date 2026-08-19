@@ -1,0 +1,21 @@
+generated: '2026-08-06'
+method: generated
+source: openapi/_original/swagger-generator-v3-openapi-original.json
+note: >-
+  The provider publishes no AGENTS.md or skill files (checked the repository
+  root and .github/). These are API Evangelist generated skills, grounded in
+  operationIds verified verbatim against
+  https://generator3.swagger.io/openapi.json.
+skills:
+  - file: swagger-codegen-generate-client-sdk.md
+    name: Generate a client SDK from an OpenAPI definition
+    api: openapi/swagger-codegen-generation-api-openapi.yml
+    operations: [languages, listOptions, generate]
+  - file: swagger-codegen-generate-server-stub.md
+    name: Generate a server stub or documentation package
+    api: openapi/swagger-codegen-generation-api-openapi.yml
+    operations: [languages, languagesMulti, listOptions, generate]
+  - file: swagger-codegen-debug-templates.md
+    name: Debug a custom generator template
+    api: openapi/swagger-codegen-utilities-api-openapi.yml
+    operations: [generateBundle, renderTemplate]

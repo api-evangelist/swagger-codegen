@@ -1,0 +1,124 @@
+{
+  "item": [
+    {
+      "id": "c8443171-a781-40d1-a4ed-dc98ffd63447",
+      "name": "Options",
+      "description": {
+        "content": "Retrieve per-language configuration options",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "56d703b7-e162-4203-a74e-0971c37adb29",
+          "name": "List Generator Options",
+          "request": {
+            "name": "List Generator Options",
+            "description": {
+              "content": "Returns the configurable options available for a specific generator language and OpenAPI version. Options control naming, packaging, type mappings, and other generation behaviors.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>",
+                  "description": "Generator language identifier (e.g., python, java, typescript-axios)"
+                },
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "V3",
+                  "description": "OpenAPI version (defaults to V3)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c239585e-2775-42c1-87bf-cdbd446bbb68",
+              "name": "Map of option keys to CliOption descriptors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "V3"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {\n    \"optionName\": \"string\",\n    \"description\": \"string\",\n    \"type\": \"integer\",\n    \"default\": \"string\",\n    \"enum\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://generator3.swagger.io/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "70f71071-a564-48a5-8bd3-2df0e76b469a",
+    "name": "Swagger Generator Generation Options API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Swagger Generator online REST API at generator3.swagger.io provides endpoints for generating client SDKs, server stubs, and documentation artifacts from OpenAPI V2 and V3 specifications. Supports 40+ client languages and 20+ server frameworks with configurable generation options.\n\nContact Support:\n Name: Swagger",
+      "type": "text/plain"
+    }
+  }
+}

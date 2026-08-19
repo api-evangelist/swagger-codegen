@@ -1,0 +1,53 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Swagger Generator — Languages
+  version: 1.0.0
+  description: Enhancements applied by the API Evangelist enrichment pipeline on top of the provider's
+    own contract at https://generator3.swagger.io/openapi.json. The upstream document is preserved verbatim
+    at openapi/_original/swagger-generator-v3-openapi-original.json; this overlay records what we added
+    and why. Every operationId referenced here is verbatim upstream.
+extends: openapi/swagger-codegen-languages-api-openapi.yml
+x-source: https://generator3.swagger.io/openapi.json
+x-generated: '2026-08-06'
+x-method: generated
+actions:
+- target: $.info
+  description: Record provenance and the observed drift between the hosted service and the released engine.
+  update:
+    x-apievangelist-source: https://generator3.swagger.io/openapi.json
+    x-apievangelist-harvested: '2026-08-06'
+    x-hosted-service-version: 3.0.75
+    x-latest-release: 3.0.82
+- target: $.servers
+  description: Upstream declares a RELATIVE server of '/api'. Resolved against the document origin this
+    is https://generator3.swagger.io/api. We make it absolute so the spec is callable standalone — the
+    single most consequential correction in this repo, since generator3.swagger.io/generate without the
+    /api base path does not reach the API.
+  update:
+  - url: https://generator3.swagger.io/api
+    description: Swagger Generator V3 online service (base path /api)
+- target: $.tags
+  description: Upstream tags every operation with the same four generator TYPES (clients, servers, documentation,
+    config), which makes the four tags non-discriminating. We retag by resource so each operation lands
+    in exactly one group and the spec can be split one-file-per-resource.
+  update:
+  - name: Languages
+- target: $.info.description
+  description: Upstream description is a one-line pointer to the GitHub repo and an IRC channel; replaced
+    with a substantive summary.
+  update: null
+x-notes:
+  operations_covered:
+  - languages
+  - languagesMulti
+  - clientLanguages
+  - serverLanguages
+  - documentationLanguages
+  summaries_and_descriptions: Upstream provides a summary per operation and no descriptions. We keep the
+    upstream summary verbatim under x-upstream-summary on each operation and add a written description.
+    Parameter descriptions and enums are added where upstream leaves them untyped.
+  error_responses: Upstream declares ONLY 200 on every operation. Observed error behaviour is captured
+    out of band in errors/swagger-codegen-problem-types.yml rather than being asserted into the contract,
+    because the service returns text/plain sentences with no schema.
+  not_added: 'No security scheme is added: the service is genuinely unauthenticated (verified anonymous
+    200 on GET /api/clients). No pagination, idempotency or rate-limit constructs are added — none exist.'

@@ -1,0 +1,51 @@
+generated: '2026-08-06'
+method: probed
+source: https://generator3.swagger.io/
+summary: >-
+  There is no test-vs-live separation because there are no credentials and no
+  accounts — the whole hosted service is effectively a sandbox. What the
+  provider does publish is an interactive Swagger UI console served at the API
+  host root, plus a self-hostable Docker image for teams that want a private
+  instance.
+console:
+  url: https://generator3.swagger.io/
+  kind: swagger-ui
+  detail: >-
+    The root of the API host serves a Swagger UI bundle wired to the service's
+    own openapi.json, so every operation is callable from the browser with
+    "Try it out". Fully open CORS makes those in-browser calls work against the
+    live service.
+  http_status: 200
+  fetched: '2026-08-06'
+  auth_required: false
+legacy_console:
+  url: https://generator.swagger.io/
+  kind: swagger-ui
+  note: The 2.x generator console, backed by generator.swagger.io/api/swagger.json.
+test_mode:
+  separate_keys: false
+  key_prefixes: []
+  detail: No API keys exist, so there are no test-mode key prefixes or modes to record.
+self_hosting:
+  image: swaggerapi/swagger-generator
+  url: https://hub.docker.com/r/swaggerapi/swagger-generator
+  command: docker run -d swaggerapi/swagger-generator
+  docs: https://github.com/swagger-api/swagger-codegen/blob/master/docs/docker.md
+  detail: >-
+    docs/docker.md walks through starting the container, POSTing a generation
+    request to the container IP, and downloading the resulting zip — the
+    supported way to run the generator API privately and without rate concerns.
+safe_inputs:
+  - value: https://petstore.swagger.io/v2/swagger.json
+    kind: example-spec-url
+    detail: >-
+      The spec URL used in the project's own README examples; safe to pass as
+      specURL when exercising generate/generateFromURL.
+    source: https://github.com/swagger-api/swagger-codegen#getting-started
+caveats:
+  - >-
+    Calls to the hosted console hit the same shared free instance real users
+    hit. There is no isolated environment; self-host the Docker image for load.
+  - >-
+    Generation input is your OpenAPI definition. Do not paste a spec containing
+    real credentials or internal hostnames into the public service.

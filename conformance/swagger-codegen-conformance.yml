@@ -1,0 +1,53 @@
+generated: '2026-08-06'
+method: probed
+source: https://generator3.swagger.io/openapi.json
+standards:
+  - id: openapi-3.0
+    conforms: true
+    evidence: 'Published contract declares openapi: 3.0.1 at https://generator3.swagger.io/openapi.json'
+  - id: openapi-3.1
+    conforms: false
+    evidence: 'Hosted contract is 3.0.1; the generator itself accepts 3.0 input, per README compatibility table (1.0, 1.1, 1.2, 2.0, 3.0)'
+  - id: swagger-2.0
+    conforms: true
+    evidence: 'The 2.x service publishes swagger: 2.0 at https://generator.swagger.io/api/swagger.json'
+  - id: oauth2
+    conforms: false
+    evidence: No securitySchemes of type oauth2 in either contract; service is unauthenticated.
+  - id: oidc
+    conforms: false
+    evidence: '/.well-known/openid-configuration returned 404 on all hosts.'
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: 'Errors return text/plain sentences, not application/problem+json — see errors/swagger-codegen-problem-types.yml'
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: '/.well-known/security.txt returned 404 on generator3.swagger.io, generator.swagger.io and swagger.io.'
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: 'Three operations carry deprecated: true in the contract, but no Sunset or Deprecation response header is emitted.'
+  - id: json-api
+    conforms: false
+    evidence: Responses are bare arrays/objects and binary ZIP, not JSON:API documents.
+  - id: cors
+    conforms: true
+    evidence: 'access-control-allow-origin: * observed on GET /api/clients.'
+  - id: idempotency
+    conforms: false
+    evidence: No idempotency key mechanism — see conventions/swagger-codegen-conventions.yml.
+  - id: pagination
+    conforms: false
+    evidence: Collection endpoints return complete unpaginated arrays.
+  - id: apache-2.0
+    conforms: true
+    evidence: 'License declared in the contract and on the repository (SPDX Apache-2.0).'
+organizational_compliance:
+  publisher: SmartBear Software
+  programs: [SOC 2, ISO/IEC 27001, 'GDPR & CCPA', NIST CSF]
+  url: https://trust.smartbear.com/
+  artifact: security/swagger-codegen-trust-center.yml
+  scope_caveat: >-
+    These are SmartBear corporate programs published for the commercial SmartBear
+    products. Swagger Codegen is Apache-2.0 open source and the free
+    generator3.swagger.io service carries no separate attestation or SLA — do
+    not read the corporate certification as covering this free endpoint.

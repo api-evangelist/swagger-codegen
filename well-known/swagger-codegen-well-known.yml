@@ -1,0 +1,48 @@
+generated: '2026-08-06'
+method: probed
+source: live HTTP probe of every apis.yml host
+notes: >-
+  Every /.well-known/ discovery path was probed on all three hosts and every one
+  returned 404 from the origin (nginx on the generator hosts, the marketing CDN
+  on swagger.io). No security.txt, no OIDC/OAuth metadata, no api-catalog, no
+  ai-plugin, no agent card. This is a recorded absence, not a failed run — no
+  WellKnown pointer is wired into apis.yml because there is no discovery
+  document to point at.
+hosts:
+  - host: https://generator3.swagger.io
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /llms.txt, status: 404}
+  - host: https://generator.swagger.io
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /llms.txt, status: 404}
+  - host: https://swagger.io
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /llms.txt, status: 404}
+gaps:
+  - >-
+    No /.well-known/security.txt (RFC 9116) on any host, even though SmartBear
+    runs a real HackerOne-backed disclosure channel at smartbear.com/security/.
+    Publishing security.txt is a one-file fix that would make that program
+    machine-discoverable.

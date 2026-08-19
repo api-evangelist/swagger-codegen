@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Swagger Generator Generation Languages API",
+    "version": "3.0.75"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Languages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Generator Languages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://generator3.swagger.io/api/:type/:version",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Generator type to list"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "OpenAPI specification version"
+              }
+            ]
+          },
+          "docs": "Returns the list of available generator language identifiers for the given generator type (client, server, documentation, config) and OpenAPI version (V2 or V3)."
+        },
+        {
+          "info": {
+            "name": "List Languages by Multiple Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://generator3.swagger.io/api/types",
+            "params": [
+              {
+                "name": "types",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of generator types (client,server,documentation,config)"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "OpenAPI specification version filter"
+              }
+            ]
+          },
+          "docs": "Returns the list of available generator languages filtered by a comma- separated list of generator types and an optional OpenAPI version."
+        },
+        {
+          "info": {
+            "name": "Deprecated, use '/{type}/{version}' instead. List generator languages of type 'client' or 'documentation' for given codegen version (defaults to V3)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://generator3.swagger.io/api/clients",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "generator version used by codegen engine"
+              },
+              {
+                "name": "clientOnly",
+                "value": "",
+                "type": "query",
+                "description": "flag to only return languages of type `client`"
+              }
+            ]
+          },
+          "docs": "Deprecated, use '/{type}/{version}' instead. List generator languages of type 'client' or 'documentation' for given codegen version (defaults to V3)"
+        },
+        {
+          "info": {
+            "name": "Deprecated, use '/{type}/{version}' instead. List generator languages of type 'server' for given codegen version (defaults to V3)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://generator3.swagger.io/api/servers",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "generator version used by codegen engine"
+              }
+            ]
+          },
+          "docs": "Deprecated, use '/{type}/{version}' instead. List generator languages of type 'server' for given codegen version (defaults to V3)"
+        },
+        {
+          "info": {
+            "name": "Deprecated, use '/{type}/{version}' instead. List generator languages of type 'documentation' for given codegen version (defaults to V3)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://generator3.swagger.io/api/documentation",
+            "params": [
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "generator version used by codegen engine"
+              }
+            ]
+          },
+          "docs": "Deprecated, use '/{type}/{version}' instead. List generator languages of type 'documentation' for given codegen version (defaults to V3)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

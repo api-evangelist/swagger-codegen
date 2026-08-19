@@ -1,0 +1,103 @@
+generated: '2026-08-06'
+method: searched
+source: https://search.maven.org/solrsearch/select?q=g:io.swagger.codegen.v3
+notes: >-
+  Swagger Codegen is distributed primarily through Maven Central (group
+  io.swagger.codegen.v3 for the 3.x line, io.swagger for the legacy 2.x line)
+  and Docker Hub. The npm entries below are third-party wrappers, not
+  first-party releases, and are marked official: false.
+packages:
+  - language: java
+    registry: maven
+    name: io.swagger.codegen.v3:swagger-codegen-cli
+    version: 3.0.68
+    url: https://mvnrepository.com/artifact/io.swagger.codegen.v3/swagger-codegen-cli
+    install: >-
+      java -jar swagger-codegen-cli-3.0.68.jar generate -i <spec> -l <lang> -o <dir>
+    official: true
+    role: cli
+  - language: java
+    registry: maven
+    name: io.swagger.codegen.v3:swagger-codegen
+    version: 3.0.68
+    url: https://mvnrepository.com/artifact/io.swagger.codegen.v3/swagger-codegen
+    install: 'maven dependency: io.swagger.codegen.v3:swagger-codegen:3.0.68'
+    official: true
+    role: library
+  - language: java
+    registry: maven
+    name: io.swagger.codegen.v3:swagger-codegen-maven-plugin
+    version: 3.0.68
+    url: https://mvnrepository.com/artifact/io.swagger.codegen.v3/swagger-codegen-maven-plugin
+    install: 'maven plugin: io.swagger.codegen.v3:swagger-codegen-maven-plugin:3.0.68'
+    official: true
+    role: build-plugin
+  - language: java
+    registry: maven
+    name: io.swagger.codegen.v3:swagger-codegen-generators
+    version: 1.0.56
+    url: https://mvnrepository.com/artifact/io.swagger.codegen.v3/swagger-codegen-generators
+    official: true
+    role: library
+  - language: java
+    registry: maven
+    name: io.swagger.codegen.v3:swagger-generator
+    version: 3.0.68
+    url: https://mvnrepository.com/artifact/io.swagger.codegen.v3/swagger-generator
+    official: true
+    role: server
+    note: The web service that backs generator3.swagger.io
+  - language: java
+    registry: maven
+    name: io.swagger:swagger-codegen-cli
+    version: 2.4.x
+    url: https://mvnrepository.com/artifact/io.swagger/swagger-codegen-cli
+    official: true
+    role: cli
+    note: Legacy 2.x line, still released (v2.4.52 on 2026-04-15)
+  - language: docker
+    registry: dockerhub
+    name: swaggerapi/swagger-codegen-cli-v3
+    url: https://hub.docker.com/r/swaggerapi/swagger-codegen-cli-v3
+    install: docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli-v3 generate
+    official: true
+    role: cli
+  - language: docker
+    registry: dockerhub
+    name: swaggerapi/swagger-codegen-cli
+    url: https://hub.docker.com/r/swaggerapi/swagger-codegen-cli
+    install: docker run --rm -v ${PWD}:/local swaggerapi/swagger-codegen-cli generate
+    official: true
+    role: cli
+    note: 'Listed in docs/docker.md as the official CLI image (2.x line)'
+  - language: docker
+    registry: dockerhub
+    name: swaggerapi/swagger-generator
+    url: https://hub.docker.com/r/swaggerapi/swagger-generator
+    install: docker run -d swaggerapi/swagger-generator
+    official: true
+    role: server
+    note: 'Listed in docs/docker.md as the official web service image'
+  - language: javascript
+    registry: npm
+    name: swagger-codegen-cli
+    version: 2.2.3
+    url: https://www.npmjs.com/package/swagger-codegen-cli
+    install: npm install swagger-codegen-cli
+    official: false
+    note: Third-party node wrapper around the Swagger Codegen CLI jar
+  - language: javascript
+    registry: npm
+    name: swagger-codegen
+    version: 0.1.1
+    url: https://www.npmjs.com/package/swagger-codegen
+    install: npm install swagger-codegen
+    official: false
+    note: Third-party, unaffiliated
+registries_probed:
+  - {registry: maven, hit: true}
+  - {registry: dockerhub, hit: true}
+  - {registry: npm, hit: true, first_party: false}
+  - {registry: pypi, hit: false}
+  - {registry: nuget, hit: false}
+  - {registry: rubygems, hit: false}

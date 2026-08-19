@@ -1,0 +1,36 @@
+generated: '2026-08-06'
+method: probed
+source: https://generator3.swagger.io/openapi.json
+docs: https://github.com/swagger-api/swagger-codegen/wiki
+summary:
+  types: []
+  api_key_in: []
+  oauth2_flows: []
+  model: none
+  public: true
+schemes: []
+findings:
+  - >-
+    Neither published contract declares a securitySchemes / securityDefinitions
+    block. The v3 spec at generator3.swagger.io/openapi.json has no
+    components.securitySchemes; the v2 spec at generator.swagger.io/api/swagger.json
+    has no securityDefinitions.
+  - >-
+    Verified by unauthenticated call: GET https://generator3.swagger.io/api/clients
+    returned 200 with the full language array and no credential of any kind.
+  - >-
+    The service returns permissive CORS (access-control-allow-origin: *) and
+    advertises api_key and Authorization in access-control-allow-headers, but
+    neither is required by any operation and neither is declared in the spec.
+  - >-
+    AuthorizationValue in the request schema is NOT authentication for this API.
+    It carries credentials the generator should use when fetching the CALLER's
+    remote OpenAPI definition (specURL) — a passthrough, not a gate.
+evidence:
+  - {url: 'https://generator3.swagger.io/api/clients', http_status: 200, auth_sent: none, fetched: '2026-08-06'}
+  - {url: 'https://generator3.swagger.io/openapi.json', http_status: 200, securitySchemes: absent, fetched: '2026-08-06'}
+  - {url: 'https://generator.swagger.io/api/swagger.json', http_status: 200, securityDefinitions: absent, fetched: '2026-08-06'}
+agent_guidance: >-
+  No credential acquisition step is required. An agent can call every operation
+  anonymously. There is no rate-limit header, no quota, and no account, so an
+  agent must self-throttle — see rate-limits/ and conventions/.

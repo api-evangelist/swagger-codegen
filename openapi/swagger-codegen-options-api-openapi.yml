@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Swagger Generator Generation Options API
   description: The Swagger Generator online REST API at generator3.swagger.io provides endpoints for generating client SDKs, server stubs, and documentation artifacts from OpenAPI V2 and V3 specifications. Supports 40+ client languages and 20+ server frameworks with configurable generation options.
@@ -12,8 +12,8 @@ info:
   x-logo:
     url: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 servers:
-- url: https://generator3.swagger.io
-  description: Swagger Generator V3 online service
+- url: https://generator3.swagger.io/api
+  description: Swagger Generator V3 online service (base path /api)
 tags:
 - name: Options
   description: Retrieve per-language configuration options
@@ -51,6 +51,7 @@ paths:
                 type: object
                 additionalProperties:
                   $ref: '#/components/schemas/CliOption'
+      x-upstream-summary: Returns options for a given language and version (defaults to V3)
 components:
   schemas:
     CliOption:

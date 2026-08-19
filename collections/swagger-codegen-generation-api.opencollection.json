@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Swagger Generator Generation API",
+    "version": "3.0.75"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Generation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate Code From URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://generator3.swagger.io/api/generate",
+            "params": [
+              {
+                "name": "codegenOptionsURL",
+                "value": "",
+                "type": "query",
+                "description": "URL to a JSON GenerationRequest configuration object"
+              }
+            ]
+          },
+          "docs": "Generate a client SDK, server stub, or documentation package from an OpenAPI specification referenced by URL via a JSON configuration at the provided URL."
+        },
+        {
+          "info": {
+            "name": "Generate Code From Spec",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://generator3.swagger.io/api/generate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a client SDK, server stub, or documentation package from an OpenAPI specification provided in the request body. Returns the generated artifact as a binary ZIP file."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

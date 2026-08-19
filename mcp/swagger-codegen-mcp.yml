@@ -1,0 +1,59 @@
+generated: '2026-08-06'
+method: derived
+status: candidate
+source: openapi/_original/swagger-generator-v3-openapi-original.json
+search_result: No official or hosted MCP server was found for Swagger Codegen. The swagger-api GitHub
+  organization publishes none, no MCP endpoint is documented on swagger.io or in the wiki, and /.well-known/ai-plugin.json
+  returned 404 on every host. The tool list below is an API Evangelist CANDIDATE derived one-to-one from
+  the provider's real operationIds — it is not published by the provider and no MCPServer pointer is wired
+  into apis.yml.
+server:
+  name: swagger-codegen
+  transport: http
+  url: null
+  published: false
+tools:
+- name: generate_code
+  description: Generate a client SDK, server stub, or documentation package from an OpenAPI definition.
+    Returns a ZIP archive.
+  source_operation: openapi/swagger-codegen-generation-api-openapi.yml#generate
+- name: generate_code_from_url
+  description: Generate code where the GenerationRequest itself is fetched from a URL.
+  source_operation: openapi/swagger-codegen-generation-api-openapi.yml#generateFromURL
+- name: list_languages
+  description: List generator languages for a given type (client, server, documentation, config) and version
+    (V2, V3).
+  source_operation: openapi/swagger-codegen-languages-api-openapi.yml#languages
+- name: list_languages_multi
+  description: List generator languages across several types at once.
+  source_operation: openapi/swagger-codegen-languages-api-openapi.yml#languagesMulti
+- name: list_options
+  description: Return the configurable generator options (CliOption descriptors) for a language.
+  source_operation: openapi/swagger-codegen-options-api-openapi.yml#listOptions
+- name: generate_bundle
+  description: Return the intermediate codegen model ("bundle") as JSON instead of generating files.
+  source_operation: openapi/swagger-codegen-utilities-api-openapi.yml#generateBundle
+- name: render_template
+  description: Render a Mustache template against a data object — useful for testing custom generator
+    templates.
+  source_operation: openapi/swagger-codegen-utilities-api-openapi.yml#renderTemplate
+deprecated_not_exposed:
+- operation: clientLanguages
+  reason: deprecated upstream in favour of languages
+- operation: serverLanguages
+  reason: deprecated upstream in favour of languages
+- operation: documentationLanguages
+  reason: deprecated upstream in favour of languages
+probe_evidence:
+- url: https://generator3.swagger.io/.well-known/ai-plugin.json
+  http_status: 404
+  fetched: '2026-08-06'
+- url: https://swagger.io/.well-known/ai-plugin.json
+  http_status: 404
+  fetched: '2026-08-06'
+deployment:
+  mode: none
+  verified: derived
+  tools: 7
+  checked: '2026-08-12'
+  source: catalog MCP census

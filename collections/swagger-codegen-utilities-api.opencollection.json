@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Swagger Generator Generation Utilities API",
+    "version": "3.0.75"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Utilities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate Intermediate Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://generator3.swagger.io/api/model",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates and returns the intermediate representation (bundle/model) of the code generation process as a JSON object. Useful for debugging and template development."
+        },
+        {
+          "info": {
+            "name": "Render Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://generator3.swagger.io/api/render",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Render a Mustache template using provided data. Useful for testing custom generator templates without running a full code generation pass."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
