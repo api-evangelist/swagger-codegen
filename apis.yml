@@ -22,6 +22,12 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/swagger-co
 tags:
   - Client Libraries
   - Code Generation
+  - Open-Source
+  - OpenAPI
+  - SDK
+tags_raw:
+  - Client Libraries
+  - Code Generation
   - Open Source
   - OpenAPI
   - SDK
@@ -76,6 +82,8 @@ apis:
   humanURL: https://generator3.swagger.io/
   baseURL: https://generator3.swagger.io/api
   tags:
+  - Language
+  tags_raw:
   - Languages
   properties:
   - type: OpenAPI
