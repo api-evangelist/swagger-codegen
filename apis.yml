@@ -6,6 +6,19 @@ description: >-
   server frameworks. Available as a CLI, Docker image, Maven/Gradle plugin, and online REST API at
   generator3.swagger.io.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
@@ -139,6 +152,10 @@ apis:
   - type: GitHubRepository
     url: https://github.com/swagger-api/swagger-codegen
 common:
+  - type: CodeOfConduct
+    url: https://github.com/swagger-api/swagger-codegen/blob/master/CODE_OF_CONDUCT.md
+  - type: ContributionGuide
+    url: https://github.com/swagger-api/swagger-codegen/blob/master/CONTRIBUTING.md
   - type: MCPServer
     url: mcp/swagger-codegen-mcp.yml
   - type: AgenticAccess
