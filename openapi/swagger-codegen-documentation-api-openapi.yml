@@ -1,0 +1,76 @@
+openapi: 3.2.0
+info:
+  title: Swagger Generator Documentation API
+  description: 'This is an online swagger codegen server.  You can find out more at https://github.com/swagger-api/swagger-codegen or on [irc.freenode.net, #swagger](http://swagger.io/irc/).'
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 3.0.75
+servers:
+- url: /api
+tags:
+- name: documentation
+paths:
+  /documentation:
+    get:
+      tags:
+      - documentation
+      summary: Deprecated, use '/{type}/{version}' instead. List generator languages of type 'documentation' for given codegen version (defaults to V3)
+      operationId: documentationLanguages
+      parameters:
+      - $ref: '#/components/parameters/version'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+      deprecated: true
+      x-swagger-router-controller: io.swagger.v3.generator.online.GeneratorController
+  /render:
+    post:
+      tags:
+      - documentation
+      summary: render a template using the provided data
+      operationId: renderTemplate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RenderRequest'
+      responses:
+        '200':
+          description: successful operation
+      x-swagger-router-controller: io.swagger.v3.generator.online.GeneratorController
+components:
+  parameters:
+    version:
+      name: version
+      in: query
+      description: generator version used by codegen engine
+      schema:
+        type: string
+        enum:
+        - V2
+        - V3
+  schemas:
+    RenderRequest:
+      required:
+      - context
+      - template
+      type: object
+      properties:
+        template:
+          title: template
+          type: string
+          description: template as string
+          example: '{{!mustache}}'
+        context:
+          title: context
+          type: string
+          description: context as string
+          example: '{}'
+      x-swagger-router-model: io.swagger.codegen.v3.service.RenderRequest

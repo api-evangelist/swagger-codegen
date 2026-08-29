@@ -151,6 +151,36 @@ apis:
     url: openapi/_original/swagger-generator-v3-openapi-original.json
   - type: GitHubRepository
     url: https://github.com/swagger-api/swagger-codegen
+- aid: swagger-codegen:swagger-codegen-clients-api
+  name: Swagger Codegen Clients API
+  description: The clients API from Swagger Codegen — 9 operation(s) for clients.
+  humanURL: https://github.com/swagger-api/swagger-codegen#getting-started
+  baseURL: https://generator3.swagger.io/api
+  tags:
+  - clients
+  properties:
+  - type: OpenAPI
+    url: openapi/swagger-codegen-clients-api-openapi.yml
+- aid: swagger-codegen:swagger-codegen-documentation-api
+  name: Swagger Codegen Documentation API
+  description: The documentation API from Swagger Codegen — 2 operation(s) for documentation.
+  humanURL: https://github.com/swagger-api/swagger-codegen#getting-started
+  baseURL: https://generator3.swagger.io/api
+  tags:
+  - documentation
+  properties:
+  - type: OpenAPI
+    url: openapi/swagger-codegen-documentation-api-openapi.yml
+- aid: swagger-codegen:swagger-codegen-servers-api
+  name: Swagger Codegen Servers API
+  description: The servers API from Swagger Codegen — 4 operation(s) for servers.
+  humanURL: https://github.com/swagger-api/swagger-codegen#getting-started
+  baseURL: https://generator3.swagger.io/api
+  tags:
+  - servers
+  properties:
+  - type: OpenAPI
+    url: openapi/swagger-codegen-servers-api-openapi.yml
 common:
   - type: CodeOfConduct
     url: https://github.com/swagger-api/swagger-codegen/blob/master/CODE_OF_CONDUCT.md
