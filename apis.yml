@@ -157,6 +157,8 @@ apis:
   humanURL: https://github.com/swagger-api/swagger-codegen#getting-started
   baseURL: https://generator3.swagger.io/api
   tags:
+  - Clients
+  tags_raw:
   - clients
   properties:
   - type: OpenAPI
@@ -167,6 +169,8 @@ apis:
   humanURL: https://github.com/swagger-api/swagger-codegen#getting-started
   baseURL: https://generator3.swagger.io/api
   tags:
+  - Documentation
+  tags_raw:
   - documentation
   properties:
   - type: OpenAPI
@@ -177,6 +181,8 @@ apis:
   humanURL: https://github.com/swagger-api/swagger-codegen#getting-started
   baseURL: https://generator3.swagger.io/api
   tags:
+  - Servers
+  tags_raw:
   - servers
   properties:
   - type: OpenAPI
