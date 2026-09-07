@@ -280,3 +280,5 @@ x-enrichment:
   status: enriched
   artifacts_added: 25
   pass: local-v1
+x-parent: swagger
+x-relationship: product

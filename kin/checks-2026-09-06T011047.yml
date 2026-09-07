@@ -1,16 +1,16 @@
 ---
 kin_checks:
   slug: swagger-codegen
-  schema_version: 0.18.2
-  scored_at: '2026-09-04'
-  run_ts: 2026-09-04T062714
+  schema_version: 0.18.3
+  scored_at: '2026-09-06'
+  run_ts: 2026-09-06T011047
   note: Actionable checks only (missed + partial). earned/na are every other check
-    in rubric/scoring-0.18.2.yml; counts below let you verify that.
+    in rubric/scoring-0.18.3.yml; counts below let you verify that.
   counts:
     total: 132
     earned: 47
-    partial: 21
-    missed: 38
+    partial: 22
+    missed: 37
     na: 26
   checks:
   - id: base_url_per_api
@@ -52,9 +52,6 @@ kin_checks:
     status: missed
   - id: overlay_published
     status: missed
-  - id: status_page_present
-    status: missed
-    detail: pointer liveness 0.0
   - id: webhooks_advertised
     status: missed
   - id: roadmap_present
@@ -126,6 +123,10 @@ kin_checks:
   - id: balanced_severities
     status: partial
     earned: 0.75
+  - id: status_page_present
+    status: partial
+    earned: 3.0
+    detail: pointer liveness 0.5
   - id: rate_limits_documented
     status: partial
     earned: 2.0

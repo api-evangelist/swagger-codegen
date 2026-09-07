@@ -2,7 +2,7 @@ overlay: 1.0.0
 info:
   title: API Evangelist enhancements for Swagger Generator — Options
   version: 1.0.0
-  description: Enhancements applied by the API Evangelist enrichment pipeline on top of the provider's
+  x-description: Enhancements applied by the API Evangelist enrichment pipeline on top of the provider's
     own contract at https://generator3.swagger.io/openapi.json. The upstream document is preserved verbatim
     at openapi/_original/swagger-generator-v3-openapi-original.json; this overlay records what we added
     and why. Every operationId referenced here is verbatim upstream.
