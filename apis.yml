@@ -35,7 +35,6 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/swagger-co
 tags:
   - Client Libraries
   - Code Generation
-  - Developer Tools
   - Open-Source
   - OpenAPI
   - SDK
@@ -70,88 +69,6 @@ apis:
     url: https://hub.docker.com/r/swaggerapi/swagger-codegen-cli-v3
   - type: Package
     url: https://mvnrepository.com/artifact/io.swagger.codegen.v3/swagger-codegen-cli
-- aid: swagger-codegen:swagger-codegen-generation-api
-  name: Swagger Codegen Generation API
-  description: Code generation endpoints for clients, servers, and documentation
-  humanURL: https://generator3.swagger.io/
-  baseURL: https://generator3.swagger.io/api
-  tags:
-  - Generation
-  properties:
-  - type: OpenAPI
-    url: openapi/swagger-codegen-generation-api-openapi.yml
-  - type: Overlay
-    url: overlays/swagger-codegen-generation-api-overlay.yaml
-  - type: Documentation
-    url: https://github.com/swagger-api/swagger-codegen/wiki
-  - type: OpenAPI Source
-    url: https://generator3.swagger.io/openapi.json
-  - type: OpenAPI Original
-    url: openapi/_original/swagger-generator-v3-openapi-original.json
-  - type: GitHubRepository
-    url: https://github.com/swagger-api/swagger-codegen
-- aid: swagger-codegen:swagger-codegen-languages-api
-  name: Swagger Codegen Languages API
-  description: Discover available generator languages and types
-  humanURL: https://generator3.swagger.io/
-  baseURL: https://generator3.swagger.io/api
-  tags:
-  - Language
-  tags_raw:
-  - Languages
-  properties:
-  - type: OpenAPI
-    url: openapi/swagger-codegen-languages-api-openapi.yml
-  - type: Overlay
-    url: overlays/swagger-codegen-languages-api-overlay.yaml
-  - type: Documentation
-    url: https://github.com/swagger-api/swagger-codegen/wiki
-  - type: OpenAPI Source
-    url: https://generator3.swagger.io/openapi.json
-  - type: OpenAPI Original
-    url: openapi/_original/swagger-generator-v3-openapi-original.json
-  - type: GitHubRepository
-    url: https://github.com/swagger-api/swagger-codegen
-- aid: swagger-codegen:swagger-codegen-options-api
-  name: Swagger Codegen Options API
-  description: Retrieve per-language configuration options
-  humanURL: https://generator3.swagger.io/
-  baseURL: https://generator3.swagger.io/api
-  tags:
-  - Options
-  properties:
-  - type: OpenAPI
-    url: openapi/swagger-codegen-options-api-openapi.yml
-  - type: Overlay
-    url: overlays/swagger-codegen-options-api-overlay.yaml
-  - type: Documentation
-    url: https://github.com/swagger-api/swagger-codegen/wiki
-  - type: OpenAPI Source
-    url: https://generator3.swagger.io/openapi.json
-  - type: OpenAPI Original
-    url: openapi/_original/swagger-generator-v3-openapi-original.json
-  - type: GitHubRepository
-    url: https://github.com/swagger-api/swagger-codegen
-- aid: swagger-codegen:swagger-codegen-utilities-api
-  name: Swagger Codegen Utilities API
-  description: Template rendering and intermediate model generation
-  humanURL: https://generator3.swagger.io/
-  baseURL: https://generator3.swagger.io/api
-  tags:
-  - Utilities
-  properties:
-  - type: OpenAPI
-    url: openapi/swagger-codegen-utilities-api-openapi.yml
-  - type: Overlay
-    url: overlays/swagger-codegen-utilities-api-overlay.yaml
-  - type: Documentation
-    url: https://github.com/swagger-api/swagger-codegen/wiki
-  - type: OpenAPI Source
-    url: https://generator3.swagger.io/openapi.json
-  - type: OpenAPI Original
-    url: openapi/_original/swagger-generator-v3-openapi-original.json
-  - type: GitHubRepository
-    url: https://github.com/swagger-api/swagger-codegen
 - aid: swagger-codegen:swagger-codegen-clients-api
   name: Swagger Codegen Clients API
   description: The clients API from Swagger Codegen — 9 operation(s) for clients.
@@ -189,6 +106,14 @@ apis:
   - type: OpenAPI
     url: openapi/swagger-codegen-servers-api-openapi.yml
 common:
+  - type: Overlay
+    url: overlays/swagger-codegen-generation-api-overlay.yaml
+  - type: Overlay
+    url: overlays/swagger-codegen-languages-api-overlay.yaml
+  - type: Overlay
+    url: overlays/swagger-codegen-options-api-overlay.yaml
+  - type: Overlay
+    url: overlays/swagger-codegen-utilities-api-overlay.yaml
   - type: CodeOfConduct
     url: https://github.com/swagger-api/swagger-codegen/blob/master/CODE_OF_CONDUCT.md
   - type: ContributionGuide
