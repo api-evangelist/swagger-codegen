@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: Swagger Generator Documentation API
-  description: 'This is an online swagger codegen server.  You can find out more at https://github.com/swagger-api/swagger-codegen or on [irc.freenode.net, #swagger](http://swagger.io/irc/).'
+  description: 'This is an online swagger codegen server. You can find out more at https://github.com/swagger-api/swagger-codegen or on irc.freenode.net, #swagger.'
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
@@ -9,13 +9,13 @@ info:
 servers:
 - url: /api
 tags:
-- name: documentation
+- name: Documentation
 paths:
   /documentation:
     get:
       tags:
-      - documentation
-      summary: Deprecated, use '/{type}/{version}' instead. List generator languages of type 'documentation' for given codegen version (defaults to V3)
+      - Documentation
+      summary: Deprecated, use '/{type}/{version}' instead.
       operationId: documentationLanguages
       parameters:
       - $ref: '#/components/parameters/version'
@@ -33,7 +33,7 @@ paths:
   /render:
     post:
       tags:
-      - documentation
+      - Documentation
       summary: render a template using the provided data
       operationId: renderTemplate
       requestBody:
@@ -46,16 +46,6 @@ paths:
           description: successful operation
       x-swagger-router-controller: io.swagger.v3.generator.online.GeneratorController
 components:
-  parameters:
-    version:
-      name: version
-      in: query
-      description: generator version used by codegen engine
-      schema:
-        type: string
-        enum:
-        - V2
-        - V3
   schemas:
     RenderRequest:
       required:
@@ -74,3 +64,13 @@ components:
           description: context as string
           example: '{}'
       x-swagger-router-model: io.swagger.codegen.v3.service.RenderRequest
+  parameters:
+    version:
+      name: version
+      in: query
+      description: generator version used by codegen engine
+      schema:
+        type: string
+        enum:
+        - V2
+        - V3

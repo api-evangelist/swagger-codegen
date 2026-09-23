@@ -1,15 +1,10 @@
 {
   "provider": "swagger-codegen",
   "sources": [
-    "_original/swagger-generator-openapi.yml",
     "_original/swagger-generator-v2-swagger-original.json",
     "_original/swagger-generator-v3-openapi-original.json"
   ],
   "outputs": [
-    "swagger-codegen-generation-api-openapi.yml",
-    "swagger-codegen-languages-api-openapi.yml",
-    "swagger-codegen-options-api-openapi.yml",
-    "swagger-codegen-utilities-api-openapi.yml",
     "swagger-codegen-clients-api-openapi.yml",
     "swagger-codegen-servers-api-openapi.yml",
     "swagger-codegen-documentation-api-openapi.yml"
@@ -18,18 +13,19 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
-    "swagger-generator-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "1 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "swagger-generator-v2-swagger-original.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
     "swagger-generator-v3-openapi-original.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
     "swagger-generator-v3-openapi-original.json: multi-axis tagging (4 tags, 3 first tags, 2.90x duplication over 10 operations) \u2014 split on first tag, 7 operations narrowed",
     "tag 'clients' spans 2 source specs (swagger-generator-v2-swagger-original.json, swagger-generator-v3-openapi-original.json): per-path servers applied",
-    "tag 'servers' spans 2 source specs (swagger-generator-v2-swagger-original.json, swagger-generator-v3-openapi-original.json): per-path servers applied"
+    "tag 'servers' spans 2 source specs (swagger-generator-v2-swagger-original.json, swagger-generator-v3-openapi-original.json): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
-    "swagger-codegen-generation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "swagger-codegen-languages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "swagger-codegen-options-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "swagger-codegen-utilities-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "_original/swagger-generator-openapi.yml: archived document superseded by a larger archived document",
+    "swagger-codegen-clients-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "swagger-codegen-documentation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "swagger-codegen-servers-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }
