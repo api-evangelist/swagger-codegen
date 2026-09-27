@@ -7,17 +7,22 @@ description: >-
   generator3.swagger.io.
 type: Index
 deliveryModel:
-  model: unknown
-  open_source: unknown
+  model: open-core
+  license: Apache-2.0
+  license_evidence:
+    repo: swagger-api/swagger-codegen
+    spdx: Apache-2.0
+    stars: 17787
+  open_source: true
   commercial: true
   callable_host: true
-  label: Delivery model not determined — needs a product licence on record
-  confidence: low
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: medium
   source:
   - openapi
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-license
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -35,15 +40,18 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/swagger-co
 tags:
   - Client Libraries
   - Code Generation
-  - Open-Source
+  - Open Source
   - OpenAPI
   - SDK
+  - SDK Generation
 tags_raw:
   - Client Libraries
   - Code Generation
   - Open Source
   - OpenAPI
   - SDK
+  - Open-Source
+  - SDK Generation
 url: https://raw.githubusercontent.com/api-evangelist/swagger-codegen/refs/heads/main/apis.yml
 created: '2026-03-16'
 modified: '2026-08-06'

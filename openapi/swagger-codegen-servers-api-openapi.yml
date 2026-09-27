@@ -199,6 +199,8 @@ paths:
     - url: /api
 components:
   schemas:
+    UrlMatcher:
+      type: object
     ResponseCode:
       type: object
       properties:
@@ -210,42 +212,6 @@ components:
           type: string
           example: http://generator.swagger.io:80/api/gen/download/d40029be-eda6-4d62-b1ef-d05e2e91a72a
           description: URL for fetching the generated client
-    SecuritySchemeDefinition:
-      type: object
-      properties:
-        type:
-          type: string
-        description:
-          type: string
-    AuthorizationValue:
-      type: object
-      properties:
-        value:
-          type: string
-        type:
-          type: string
-        keyName:
-          type: string
-        urlMatcher:
-          $ref: '#/components/schemas/UrlMatcher'
-    UrlMatcher:
-      type: object
-    CliOption:
-      type: object
-      properties:
-        optionName:
-          type: string
-        description:
-          type: string
-        type:
-          type: string
-          description: Data type is based on the types supported by the JSON-Schema
-        enum:
-          type: object
-          additionalProperties:
-            type: string
-        default:
-          type: string
     GeneratorInput:
       type: object
       properties:
@@ -264,6 +230,40 @@ components:
           type: boolean
         securityDefinition:
           $ref: '#/components/schemas/SecuritySchemeDefinition'
+    SecuritySchemeDefinition:
+      type: object
+      properties:
+        type:
+          type: string
+        description:
+          type: string
+    AuthorizationValue:
+      type: object
+      properties:
+        value:
+          type: string
+        type:
+          type: string
+        keyName:
+          type: string
+        urlMatcher:
+          $ref: '#/components/schemas/UrlMatcher'
+    CliOption:
+      type: object
+      properties:
+        optionName:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+          description: Data type is based on the types supported by the JSON-Schema
+        enum:
+          type: object
+          additionalProperties:
+            type: string
+        default:
+          type: string
   parameters:
     version:
       name: version
