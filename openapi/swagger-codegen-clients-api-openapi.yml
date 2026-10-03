@@ -385,8 +385,6 @@ paths:
     - url: /api
 components:
   schemas:
-    UrlMatcher:
-      type: object
     ResponseCode:
       type: object
       properties:
@@ -398,6 +396,31 @@ components:
           type: string
           example: http://generator.swagger.io:80/api/gen/download/d40029be-eda6-4d62-b1ef-d05e2e91a72a
           description: URL for fetching the generated client
+    UrlMatcher:
+      type: object
+    SecuritySchemeDefinition:
+      type: object
+      properties:
+        type:
+          type: string
+        description:
+          type: string
+    CliOption:
+      type: object
+      properties:
+        optionName:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+          description: Data type is based on the types supported by the JSON-Schema
+        enum:
+          type: object
+          additionalProperties:
+            type: string
+        default:
+          type: string
     GeneratorInput:
       type: object
       properties:
@@ -416,13 +439,6 @@ components:
           type: boolean
         securityDefinition:
           $ref: '#/components/schemas/SecuritySchemeDefinition'
-    SecuritySchemeDefinition:
-      type: object
-      properties:
-        type:
-          type: string
-        description:
-          type: string
     AuthorizationValue:
       type: object
       properties:
@@ -434,55 +450,6 @@ components:
           type: string
         urlMatcher:
           $ref: '#/components/schemas/UrlMatcher'
-    CliOption:
-      type: object
-      properties:
-        optionName:
-          type: string
-        description:
-          type: string
-        type:
-          type: string
-          description: Data type is based on the types supported by the JSON-Schema
-        enum:
-          type: object
-          additionalProperties:
-            type: string
-        default:
-          type: string
-    GenerationRequest:
-      required:
-      - lang
-      type: object
-      properties:
-        lang:
-          title: language
-          type: string
-          description: language to generate (required)
-          example: java
-        spec:
-          type: object
-          description: spec in json format. . Alternative to `specURL`
-        specURL:
-          type: string
-          description: URL of the spec in json format. Alternative to `spec`
-        type:
-          type: string
-          description: type of the spec
-          enum:
-          - CLIENT
-          - SERVER
-          - DOCUMENTATION
-          - CONFIG
-        codegenVersion:
-          type: string
-          description: codegen version to use
-          enum:
-          - V2
-          - V3
-        options:
-          $ref: '#/components/schemas/Options'
-      x-swagger-router-model: io.swagger.codegen.v3.service.GenerationRequest
     Options:
       type: object
       properties:
@@ -601,6 +568,39 @@ components:
         skipOverride:
           type: boolean
       x-swagger-router-model: io.swagger.codegen.v3.service.Options
+    GenerationRequest:
+      required:
+      - lang
+      type: object
+      properties:
+        lang:
+          title: language
+          type: string
+          description: language to generate (required)
+          example: java
+        spec:
+          type: object
+          description: spec in json format. . Alternative to `specURL`
+        specURL:
+          type: string
+          description: URL of the spec in json format. Alternative to `spec`
+        type:
+          type: string
+          description: type of the spec
+          enum:
+          - CLIENT
+          - SERVER
+          - DOCUMENTATION
+          - CONFIG
+        codegenVersion:
+          type: string
+          description: codegen version to use
+          enum:
+          - V2
+          - V3
+        options:
+          $ref: '#/components/schemas/Options'
+      x-swagger-router-model: io.swagger.codegen.v3.service.GenerationRequest
     AuthorizationValue_2:
       title: authorization
       type: object
@@ -636,15 +636,6 @@ components:
           - server
           - documentation
           - config
-    version:
-      name: version
-      in: query
-      description: generator version used by codegen engine
-      schema:
-        type: string
-        enum:
-        - V2
-        - V3
     type:
       name: type
       in: path
@@ -657,6 +648,15 @@ components:
         - server
         - documentation
         - config
+    version:
+      name: version
+      in: query
+      description: generator version used by codegen engine
+      schema:
+        type: string
+        enum:
+        - V2
+        - V3
 x-refined-from:
 - swagger-generator-v2-swagger-original.json
 - swagger-generator-v3-openapi-original.json
