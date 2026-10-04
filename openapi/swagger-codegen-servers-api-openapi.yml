@@ -199,19 +199,24 @@ paths:
     - url: /api
 components:
   schemas:
-    ResponseCode:
+    GeneratorInput:
       type: object
       properties:
-        code:
+        spec:
+          type: object
+        options:
+          type: object
+          additionalProperties:
+            type: string
+        swaggerUrl:
           type: string
-          example: d40029be-eda6-4d62-b1ef-d05e2e91a72a
-          description: File download code
-        link:
-          type: string
-          example: http://generator.swagger.io:80/api/gen/download/d40029be-eda6-4d62-b1ef-d05e2e91a72a
-          description: URL for fetching the generated client
-    UrlMatcher:
-      type: object
+          example: http://petstore.swagger.io/v2/swagger.json
+        authorizationValue:
+          $ref: '#/components/schemas/AuthorizationValue'
+        usingFlattenSpec:
+          type: boolean
+        securityDefinition:
+          $ref: '#/components/schemas/SecuritySchemeDefinition'
     SecuritySchemeDefinition:
       type: object
       properties:
@@ -235,24 +240,19 @@ components:
             type: string
         default:
           type: string
-    GeneratorInput:
+    ResponseCode:
       type: object
       properties:
-        spec:
-          type: object
-        options:
-          type: object
-          additionalProperties:
-            type: string
-        swaggerUrl:
+        code:
           type: string
-          example: http://petstore.swagger.io/v2/swagger.json
-        authorizationValue:
-          $ref: '#/components/schemas/AuthorizationValue'
-        usingFlattenSpec:
-          type: boolean
-        securityDefinition:
-          $ref: '#/components/schemas/SecuritySchemeDefinition'
+          example: d40029be-eda6-4d62-b1ef-d05e2e91a72a
+          description: File download code
+        link:
+          type: string
+          example: http://generator.swagger.io:80/api/gen/download/d40029be-eda6-4d62-b1ef-d05e2e91a72a
+          description: URL for fetching the generated client
+    UrlMatcher:
+      type: object
     AuthorizationValue:
       type: object
       properties:
