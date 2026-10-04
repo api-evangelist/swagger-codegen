@@ -114,6 +114,9 @@ apis:
   - type: OpenAPI
     url: openapi/swagger-codegen-servers-api-openapi.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/swagger-codegen-capability-edges.yml
+    name: Swagger Codegen Business Capability Map
   - type: Overlay
     url: overlays/swagger-codegen-generation-api-overlay.yaml
   - type: Overlay
