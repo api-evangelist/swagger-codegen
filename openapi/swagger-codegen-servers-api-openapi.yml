@@ -199,6 +199,13 @@ paths:
     - url: /api
 components:
   schemas:
+    SecuritySchemeDefinition:
+      type: object
+      properties:
+        type:
+          type: string
+        description:
+          type: string
     GeneratorInput:
       type: object
       properties:
@@ -217,13 +224,6 @@ components:
           type: boolean
         securityDefinition:
           $ref: '#/components/schemas/SecuritySchemeDefinition'
-    SecuritySchemeDefinition:
-      type: object
-      properties:
-        type:
-          type: string
-        description:
-          type: string
     CliOption:
       type: object
       properties:
@@ -240,6 +240,17 @@ components:
             type: string
         default:
           type: string
+    AuthorizationValue:
+      type: object
+      properties:
+        value:
+          type: string
+        type:
+          type: string
+        keyName:
+          type: string
+        urlMatcher:
+          $ref: '#/components/schemas/UrlMatcher'
     ResponseCode:
       type: object
       properties:
@@ -253,17 +264,6 @@ components:
           description: URL for fetching the generated client
     UrlMatcher:
       type: object
-    AuthorizationValue:
-      type: object
-      properties:
-        value:
-          type: string
-        type:
-          type: string
-        keyName:
-          type: string
-        urlMatcher:
-          $ref: '#/components/schemas/UrlMatcher'
   parameters:
     version:
       name: version

@@ -385,6 +385,13 @@ paths:
     - url: /api
 components:
   schemas:
+    SecuritySchemeDefinition:
+      type: object
+      properties:
+        type:
+          type: string
+        description:
+          type: string
     GeneratorInput:
       type: object
       properties:
@@ -403,13 +410,6 @@ components:
           type: boolean
         securityDefinition:
           $ref: '#/components/schemas/SecuritySchemeDefinition'
-    SecuritySchemeDefinition:
-      type: object
-      properties:
-        type:
-          type: string
-        description:
-          type: string
     CliOption:
       type: object
       properties:
@@ -426,6 +426,17 @@ components:
             type: string
         default:
           type: string
+    AuthorizationValue:
+      type: object
+      properties:
+        value:
+          type: string
+        type:
+          type: string
+        keyName:
+          type: string
+        urlMatcher:
+          $ref: '#/components/schemas/UrlMatcher'
     ResponseCode:
       type: object
       properties:
@@ -439,17 +450,6 @@ components:
           description: URL for fetching the generated client
     UrlMatcher:
       type: object
-    AuthorizationValue:
-      type: object
-      properties:
-        value:
-          type: string
-        type:
-          type: string
-        keyName:
-          type: string
-        urlMatcher:
-          $ref: '#/components/schemas/UrlMatcher'
     Options:
       type: object
       properties:
@@ -568,6 +568,24 @@ components:
         skipOverride:
           type: boolean
       x-swagger-router-model: io.swagger.codegen.v3.service.Options
+    AuthorizationValue_2:
+      title: authorization
+      type: object
+      properties:
+        value:
+          type: string
+          description: Authorization value
+        keyName:
+          type: string
+          description: Authorization key
+        type:
+          type: string
+          description: Authorization type
+          enum:
+          - query
+          - header
+      description: adds authorization headers when fetching the open api definitions remotely. Pass in an authorizationValue object
+      x-swagger-router-model: io.swagger.v3.parser.core.models.AuthorizationValue
     GenerationRequest:
       required:
       - lang
@@ -601,24 +619,6 @@ components:
         options:
           $ref: '#/components/schemas/Options'
       x-swagger-router-model: io.swagger.codegen.v3.service.GenerationRequest
-    AuthorizationValue_2:
-      title: authorization
-      type: object
-      properties:
-        value:
-          type: string
-          description: Authorization value
-        keyName:
-          type: string
-          description: Authorization key
-        type:
-          type: string
-          description: Authorization type
-          enum:
-          - query
-          - header
-      description: adds authorization headers when fetching the open api definitions remotely. Pass in an authorizationValue object
-      x-swagger-router-model: io.swagger.v3.parser.core.models.AuthorizationValue
   parameters:
     type:
       name: type
@@ -632,6 +632,15 @@ components:
         - server
         - documentation
         - config
+    version:
+      name: version
+      in: query
+      description: generator version used by codegen engine
+      schema:
+        type: string
+        enum:
+        - V2
+        - V3
     types:
       name: types
       in: query
@@ -648,15 +657,6 @@ components:
           - server
           - documentation
           - config
-    version:
-      name: version
-      in: query
-      description: generator version used by codegen engine
-      schema:
-        type: string
-        enum:
-        - V2
-        - V3
 x-refined-from:
 - swagger-generator-v2-swagger-original.json
 - swagger-generator-v3-openapi-original.json

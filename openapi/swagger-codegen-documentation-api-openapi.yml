@@ -46,6 +46,16 @@ paths:
           description: successful operation
       x-swagger-router-controller: io.swagger.v3.generator.online.GeneratorController
 components:
+  parameters:
+    version:
+      name: version
+      in: query
+      description: generator version used by codegen engine
+      schema:
+        type: string
+        enum:
+        - V2
+        - V3
   schemas:
     RenderRequest:
       required:
@@ -64,13 +74,3 @@ components:
           description: context as string
           example: '{}'
       x-swagger-router-model: io.swagger.codegen.v3.service.RenderRequest
-  parameters:
-    version:
-      name: version
-      in: query
-      description: generator version used by codegen engine
-      schema:
-        type: string
-        enum:
-        - V2
-        - V3
