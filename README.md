@@ -1,4 +1,4 @@
-# Swagger Codegen (swagger-codegen)
+# Swagger Codegen
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,89 +66,187 @@
 
 Swagger Codegen is an open-source template-driven code generation tool that automatically generates client libraries, server stubs, and API documentation from OpenAPI Specification definitions. It supports 40+ client languages and 20+ server frameworks. Available as a CLI, Docker image, Maven/Gradle plugin, and online REST API at generator3.swagger.io.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/swagger-codegen/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/swagger-codegen/refs/heads/main/apis.yml)
+**Areas:** Client Library · Code Generation · Open Source · OpenAPI · SDK · SDK Generation
 
-## Scope
+## Swagger Codegen on APIs.io
 
-- **Type:** Index
+Everything profiled for Swagger Codegen is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/swagger-codegen/](https://apis.io/providers/swagger-codegen/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (4)
 
-- Client Libraries
-- Code Generation
-- Open Source
-- OpenAPI
-- SDK
+- [Swagger Codegen CLI](https://apis.io/apis/swagger-codegen/swagger-codegen-cli/) — The Swagger Codegen command-line interface for generating code artifacts locally. Available as a JAR file and Docker image. Supports the same generators as…
+- [Swagger Codegen Clients API](https://apis.io/apis/swagger-codegen/swagger-codegen-clients-api/) — The clients API from Swagger Codegen — 9 operation(s) for clients.
+- [Swagger Codegen Documentation API](https://apis.io/apis/swagger-codegen/swagger-codegen-documentation-api/) — The documentation API from Swagger Codegen — 2 operation(s) for documentation.
+- [Swagger Codegen Servers API](https://apis.io/apis/swagger-codegen/swagger-codegen-servers-api/) — The servers API from Swagger Codegen — 4 operation(s) for servers.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### Swagger Generator API
+Model Context Protocol servers that expose the API to agents.
 
-The Swagger Generator online API at generator3.swagger.io provides REST endpoints for generating client SDKs, server stubs, and documentation artifacts from OpenAPI V2 and V3 specifications. Supports 40+ client and 20+ server generator targets with configurable options.
+- [swagger-codegen](https://apis.io/servers/swagger-codegen/swagger-codegen/)
 
-- **Human URL:** [https://generator3.swagger.io/](https://generator3.swagger.io/)
-- **Base URL:** `https://generator3.swagger.io`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Client Libraries
-- Code Generation
-- Generator
-- OpenAPI
-- SDK
-- Server Stubs
+- [Swagger Codegen Agentic Access](https://apis.io/agentic-access/swagger-codegen/swagger-codegen-agentic-access/)
 
-#### Properties
+#### JSON Schema (1)
 
-- [Documentation](https://github.com/swagger-api/swagger-codegen/wiki)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/swagger-codegen/refs/heads/main/openapi/swagger-generator-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Open A P I  Source](https://generator3.swagger.io/openapi.json)
-- [GitHub Repository](https://github.com/swagger-api/swagger-codegen)
-- [Postman Collection](collections/swagger-generator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/swagger-generator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+The data models the API reads and writes.
 
-### Swagger Codegen CLI
+- [Swagger Codegen Generation Request](https://apis.io/schemas/swagger-codegen/swagger-codegen-generation-request/)
 
-The Swagger Codegen command-line interface for generating code artifacts locally. Available as a JAR file and Docker image. Supports the same generators as the online API with additional template customization.
+#### JSON Structure (1)
 
-- **Human URL:** [https://github.com/swagger-api/swagger-codegen#getting-started](https://github.com/swagger-api/swagger-codegen#getting-started)
+Data models expressed in JSON Structure.
 
-#### Tags
+- [Swagger Codegen Structure](https://apis.io/json-structure/swagger-codegen/swagger-codegen-structure/)
 
-- CLI
-- Code Generation
-- Command Line
-- Docker
+#### JSON-LD (1)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [Documentation](https://github.com/swagger-api/swagger-codegen/wiki)
-- [Getting Started](https://github.com/swagger-api/swagger-codegen#getting-started)
-- [Docker](https://hub.docker.com/r/swaggerapi/swagger-codegen-cli-v3)
-- [Package](https://mvnrepository.com/artifact/io.swagger.codegen.v3/swagger-codegen-cli)
-- [Postman Collection](collections/swagger-generator.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/swagger-generator.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Swagger Codegen Context](https://apis.io/jsonld/swagger-codegen/swagger-codegen-context/)
 
-## Common Properties
+#### Vocabulary (1)
 
-- [Portal](https://swagger.io/tools/swagger-codegen/)
-- [Documentation](https://github.com/swagger-api/swagger-codegen/wiki)
+The provider's domain terms, defined.
+
+- [Swagger Codegen Vocabulary](https://apis.io/vocabularies/swagger-codegen/swagger-codegen-vocabulary/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [Swagger Codegen Generate Python Client Example](https://apis.io/examples/swagger-codegen/swagger-codegen-generate-python-client-example/)
+- [Swagger Codegen List Languages Example](https://apis.io/examples/swagger-codegen/swagger-codegen-list-languages-example/)
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [Swagger Generator Generation API](https://apis.io/collections/swagger-codegen/open-swagger-codegen-generation-api/)
+- [Swagger Generator Generation Languages API](https://apis.io/collections/swagger-codegen/open-swagger-codegen-languages-api/)
+- [Swagger Generator Generation Options API](https://apis.io/collections/swagger-codegen/open-swagger-codegen-options-api/)
+- [Swagger Generator Generation Utilities API](https://apis.io/collections/swagger-codegen/open-swagger-codegen-utilities-api/)
+- [Swagger Generator API](https://apis.io/collections/swagger-codegen/open-swagger-generator/)
+
+#### Overlays (4)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Swagger Codegen Generation Api Overlay](https://apis.io/overlays/swagger-codegen/swagger-codegen-generation-api-overlay/)
+- [Swagger Codegen Languages Api Overlay](https://apis.io/overlays/swagger-codegen/swagger-codegen-languages-api-overlay/)
+- [Swagger Codegen Options Api Overlay](https://apis.io/overlays/swagger-codegen/swagger-codegen-options-api-overlay/)
+- [Swagger Codegen Utilities Api Overlay](https://apis.io/overlays/swagger-codegen/swagger-codegen-utilities-api-overlay/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Swagger Codegen — jsonschema rules](https://apis.io/rules/swagger-codegen/swagger-codegen-jsonschema-spectral-rules/)
+- [Swagger Codegen API Rules](https://apis.io/rules/swagger-codegen/swagger-codegen-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Swagger Codegen Authentication](https://apis.io/security/swagger-codegen/swagger-codegen-authentication/)
+- [Swagger Codegen Domain Security](https://apis.io/security/swagger-codegen/swagger-codegen-domain-security/)
+- [Swagger Codegen Trust Center](https://apis.io/security/swagger-codegen/swagger-codegen-trust-center/)
+- [Swagger Codegen Vulnerability Disclosure](https://apis.io/security/swagger-codegen/swagger-codegen-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Swagger Codegen Plans Pricing](https://apis.io/plans/swagger-codegen/swagger-codegen-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Swagger Codegen Rate Limits](https://apis.io/rate-limits/swagger-codegen/swagger-codegen-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Swagger Codegen Finops](https://apis.io/finops/swagger-codegen/swagger-codegen-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://swagger.io/)
-- [GitHub Organization](https://github.com/swagger-api)
-- [GitHub Repository](https://github.com/swagger-api/swagger-codegen)
-- [Issues](https://github.com/swagger-api/swagger-codegen/issues)
-- [Releases](https://github.com/swagger-api/swagger-codegen/releases)
-- [License](https://github.com/swagger-api/swagger-codegen/blob/master/LICENSE)
-- [Docker](https://hub.docker.com/r/swaggerapi/swagger-codegen-cli-v3)
-- [Maven  Plugin](https://mvnrepository.com/artifact/io.swagger.codegen.v3/swagger-codegen-maven-plugin)
-- [Gradle  Plugin](https://plugins.gradle.org/plugin/org.hidetake.swagger.generator)
+- [Documentation](https://github.com/swagger-api/swagger-codegen/wiki)
+- [Getting started](https://github.com/swagger-api/swagger-codegen#getting-started)
+- [API reference](https://generator3.swagger.io/)
+- [Support](https://swagger.io/support/)
+- [Blog](https://swagger.io/blog/)
+- [Security](https://smartbear.com/security/)
+- [Compliance](https://trust.smartbear.com/)
+- [Terms of service](https://smartbear.com/terms-of-use/)
+- [Privacy policy](https://smartbear.com/privacy/)
+- [GitHub](https://github.com/swagger-api)
+- [Status](https://status.smartbear.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 55.7** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 43.0 |
+| Contract governance | 31.8 |
+| Operational transparency | 52.6 |
+| Developer ergonomics | 80.4 |
+| Access clarity | 44.7 |
+
+**Agent readiness 22.5** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 35.3** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/swagger-codegen/](https://apis.io/providers/swagger-codegen/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Swagger Codegen: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/swagger-codegen/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
